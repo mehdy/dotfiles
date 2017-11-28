@@ -266,6 +266,9 @@ set scrolloff=5
 "" Status bar
 set laststatus=2
 
+"" Cmd
+set cmdheight=2
+
 "" Turn on wild menu
 set wildmenu
 

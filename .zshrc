@@ -7,10 +7,11 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git git-flow python golang docker adb archlinux django react-native systemd terminator vim-interaction kubectl)
 
 # User configuration
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$GOBIN"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 export GOPATH="$HOME/Projects/Go"
 export GOBIN="$GOPATH/bin"
+export PATH="$PATH:$GOBIN"
 
 export ANDROID_HOME="$HOME/Android/Sdk"
 export PATH="$PATH:$ANDROID_HOME/tools"
