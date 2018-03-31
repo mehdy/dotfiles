@@ -17,35 +17,6 @@ if !filereadable(neobundle_readme)
   silent !mkdir -p ~/.vim/bundle
   silent !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim/
   let g:not_finsh_neobundle = "yes"
-
-  " Run shell script if exist on custom select language
-
-  silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/c/c.sh | bash -s stable
-
-  silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/php/php.sh | bash -s stable
-
-  silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/lua/lua.sh | bash -s stable
-
-  silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/lisp/lisp.sh | bash -s stable
-
-  silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/javascript/javascript.sh | bash -s stable
-
-  silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/html/html.sh | bash -s stable
-
-  silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/ocaml/ocaml.sh | bash -s stable
-
-  silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/python/python.sh | bash -s stable
-
-  silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/haskell/haskell.sh | bash -s stable
-
-  silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/elixir/elixir.sh | bash -s stable
-
-  silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/go/go.sh | bash -s stable
-
-  silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/erlang/erlang.sh | bash -s stable
-
-  silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/ruby/ruby.sh | bash -s stable
-
 endif
 
 " Required:
@@ -59,27 +30,27 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "" NeoBundle install packages
 "*****************************************************************************
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle "majutsushi/tagbar"
-NeoBundle 'rking/ag.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'sheerun/vim-polyglot'
-NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc.vim', {'build':{'unix' : 'make -f make_unix.mak'}}
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-eunuch'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle "vim-syntastic/syntastic"
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'vim-scripts/grep.vim'
-NeoBundle 'vim-scripts/CSApprox'
-NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'gorodinskiy/vim-coloresque'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'pbrisbin/vim-syntax-shakespeare'
+NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'w0rp/ale'
 
 "" Vim-Session
 NeoBundle 'xolox/vim-misc'
@@ -95,37 +66,25 @@ NeoBundle 'flazz/vim-colorschemes'
 "" Vim-Bootstrap Updater
 NeoBundle 'sherzberg/vim-bootstrap-updater'
 
-"" Custom bundles
+"" C
 NeoBundle 'vim-scripts/c.vim'
-
-"" PHP Bundle
-NeoBundle 'arnaud-lb/vim-php-namespace'
-
-"" Lisp Bundle
-NeoBundle 'vim-scripts/slimv.vim'
 
 "" Javascript Bundle
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
-NeoBundle 'maksimr/vim-jsbeautify'
 
 "" HTML Bundle
 NeoBundle 'vim-scripts/HTML-AutoCloseTag'
 NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'gorodinskiy/vim-coloresque'
 NeoBundle 'tpope/vim-haml'
-NeoBundle 'mattn/emmet-vim'
-
-NeoBundle "def-lkb/ocp-indent-vim"
 
 "" Python Bundle
 NeoBundle "davidhalter/jedi-vim"
-NeoBundle "Yggdroot/indentLine"
-NeoBundle "google/yapf", {'rtp': 'plugins/vim'}
+" NeoBundle "google/yapf", {'rtp': 'plugins/vim'}
 
+"" Haskell
 NeoBundle "eagletmt/neco-ghc"
 NeoBundle "dag/vim2hs"
-NeoBundle "pbrisbin/vim-syntax-shakespeare"
 
 "" Elixir Lang Bundle
 NeoBundle 'elixir-lang/vim-elixir'
@@ -151,19 +110,12 @@ NeoBundle "tpope/vim-rake"
 NeoBundle "tpope/vim-projectionist"
 NeoBundle "thoughtbot/vim-rspec"
 
-"" Autocomplete Bundle
-NeoBundle "Valloric/YouCompleteMe"
-
 "" Include user's extra bundle
 if filereadable(expand("~/.vimrc.local.bundles"))
   source ~/.vimrc.local.bundles
 endif
 
 call neobundle#end()
-
-"" some vim configs
-let g:vim_bootstrap_langs = "html,c,haskell,javascript,ocaml,lisp,python,go,lua,erlang,php,ruby,elixir"
-let g:vim_bootstrap_editor = "vim"				" nvim or vim
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
@@ -216,7 +168,7 @@ set shell=/bin/zsh
 " session management
 let g:session_directory = "~/.vim/session"
 let g:session_autoload = "no"
-let g:session_autosave = "no"
+let g:session_autosave = "yes"
 let g:session_command_aliases = 1
 
 "*****************************************************************************
@@ -238,20 +190,11 @@ set nocursorline
 set guioptions=egmrti
 set gfn=Monospace\ 10
 
-if has("gui_running")
-  if has("gui_mac") || has("gui_macvim")
-    set guifont=Menlo:h12
-    set transparency=7
-  endif
+if $COLORTERM == 'gnome-terminal'
+  set term=gnome-256color
 else
-  let g:CSApprox_loaded = 1
-
-  if $COLORTERM == 'gnome-terminal'
-    set term=gnome-256color
-  else
-    if $TERM == 'xterm'
-      set term=xterm-256color
-    endif
+  if $TERM == 'xterm'
+    set term=xterm-256color
   endif
 endif
 
@@ -259,33 +202,18 @@ if &term =~ '256color'
   set t_ut=
 endif
 
-"" Disable the blinking cursor.
 set gcr=a:blinkon0
 set scrolloff=5
-
-"" Status bar
 set laststatus=2
-
-"" Turn on wild menu
 set wildmenu
-
-"" magic for regex
 set magic
-
-"" don't redraw when executing macros
 set lazyredraw
-
-"" show matches
 set showmatch
-
-"" Use modeline overrides
 set modeline
 set modelines=10
-
 set title
 set titleold="Terminal"
 set titlestring=%F
-
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 
 if exists("*fugitive#statusline")
@@ -295,9 +223,11 @@ endif
 " vim-airline
 let g:airline_theme = 'tomorrow'
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#syntastic#enabled = 1
+" let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#virtualenv#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
@@ -309,8 +239,6 @@ if !exists('g:airline_powerline_fonts')
 else
   let g:airline#extensions#tabline#left_sep = ''
   let g:airline#extensions#tabline#left_alt_sep = ''
-
-  " powerline symbols
   let g:airline_left_sep = ''
   let g:airline_left_alt_sep = ''
   let g:airline_right_sep = ''
@@ -334,19 +262,6 @@ cnoreabbrev W w !sudo tee %
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 
-" ag.vim
-let g:unite_source_history_yank_enable = 1
-let g:ag_working_path_mode="r"
-try
-  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
-  call unite#filters#matcher_default#use(['matcher_fuzzy'])
-catch
-endtry
-" search a file in the filetree
-nnoremap <space><space> :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
-" reset not it is <C-l> normally
-nnoremap <space>r <Plug>(unite_restart)
-
 " NERD commentor
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
@@ -357,13 +272,13 @@ let g:NERDTrimTrailingWhitespace = 1
 
 
 "" NERDTree configuration
-let g:NERDTreeChDirMode=2
-let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
-let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeShowBookmarks=1
-let g:nerdtree_tabs_focus_on_files=1
+let g:NERDTreeChDirMode = 2
+let g:NERDTreeIgnore = ['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
+let g:NERDTreeSortOrder = ['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let g:NERDTreeShowBookmarks = 1
+let g:nerdtree_tabs_focus_on_files = 1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 20
+let g:NERDTreeWinSize = 30
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 noremap <F3> :NERDTreeToggle<CR>
@@ -372,19 +287,9 @@ noremap <F3> :NERDTreeToggle<CR>
 nnoremap <silent> <leader>f :Rgrep<CR>
 let Grep_Default_Options = '-IR'
 
-" vimshell.vim
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_prompt =  '$ '
-
 " EditorConfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
-" terminal emulation
-if g:vim_bootstrap_editor == 'nvim'
-  nnoremap <silent> <leader>sh :terminal<CR>
-else
-  nnoremap <silent> <leader>sh :VimShellCreate<CR>
-endif
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -438,16 +343,6 @@ set autowrite
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
-"" Git
-noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gc :Gcommit<CR>
-noremap <Leader>gsh :Gpush<CR>
-noremap <Leader>gll :Gpull<CR>
-noremap <Leader>gs :Gstatus<CR>
-noremap <Leader>gb :Gblame<CR>
-noremap <Leader>gd :Gvdiff<CR>
-noremap <Leader>gr :Gremove<CR>
-
 " session management
 nnoremap <leader>so :OpenSession
 nnoremap <leader>ss :SaveSession
@@ -473,41 +368,37 @@ set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
 let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
-let g:ctrlp_use_caching = 0
+let g:ctrlp_use_caching = 1
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 noremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_map = '<leader>e'
 let g:ctrlp_open_new_file = 'r'
 
 " snippets
-let g:UltiSnipsExpandTrigger="<C-space>"
-let g:UltiSnipsJumpForwardTrigger="<C-space>"
-let g:UltiSnipsJumpBackwardTrigger="<C-s-space>"
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger = "<C-space>"
+let g:UltiSnipsJumpForwardTrigger = "<C-space>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-s-space>"
+let g:UltiSnipsEditSplit = "vertical"
 
-" syntastic
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol = '✗'
-let g:syntastic_style_warning_symbol = '⚠'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_check_on_open = 1
+" ALE
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_completion_enabled = 1
+let g:airline#extensions#ale#enabled = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
 
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
-
-let g:syntastic_python_checkers=['python', 'flake8']
-let g:syntastic_python_flake8_post_args='--ignore=W391'
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_ocaml_checkers = ['merlin']
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+let g:ale_fixers = {
+	\'python': ['yapf'],
+	\'Javascript': ['eslint']
+	\}
 
 "" Copy/Paste/Cut
 if has('unnamedplus')
@@ -518,17 +409,8 @@ noremap YY "+y<CR>
 noremap P "+gP<CR>
 noremap XX "+x<CR>
 
-if has('macunix')
-  " pbcopy for OSX copy/paste
-  vmap <C-x> :!pbcopy<CR>
-  vmap <C-c> :w !pbcopy<CR><CR>
-endif
-
-"" Buffer nav
 noremap <leader>q :bp<CR>
 noremap <leader>w :bn<CR>
-
-"" Close buffer
 noremap <leader>x :bd<CR>
 
 "" Clean search (highlight)
@@ -537,14 +419,6 @@ nnoremap <silent> <leader><space> :noh<cr>
 "" Vmap for maintain Visual Mode after shifting > and <
 vmap < <gv
 vmap > >gv
-
-"" Open current line on GitHub
-noremap <leader>o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs open<CR><CR>
-
-"" Custom configs
-
-" polyglot
-let g:polyglot_disabled = ['javascript', 'jsx']
 
 " Tagbar
 nmap <silent> <F4> :TagbarOpenAutoClose<CR>
@@ -557,26 +431,23 @@ let g:tagbar_autofocus = 1
 let g:javascript_enable_domhtmlcss = 1
 let g:jsx_ext_required = 0
 let g:javascript_plugin_flow = 1
-set conceallevel=1
-let g:javascript_conceal_function             = "ƒ"
-let g:javascript_conceal_null                 = "ø"
-let g:javascript_conceal_this                 = "@"
-let g:javascript_conceal_return               = "⇚"
-let g:javascript_conceal_undefined            = "¿"
-let g:javascript_conceal_NaN                  = "ℕ"
-let g:javascript_conceal_prototype            = "¶"
-let g:javascript_conceal_static               = "•"
-let g:javascript_conceal_super                = "Ω"
-let g:javascript_conceal_arrow_function       = "⇒"
-autocmd BufWritePre *.js call JsBeautify()
-autocmd BufWritePre *.json call JsonBeautify()
-autocmd BufWritePre *.jsx call JsxBeautify()
-autocmd BufWritePre *.html call HtmlBeautify()
-autocmd BufWritePre *.css call CSSBeautify()
+" set conceallevel = 1
+" let g:javascript_conceal_function             = "ƒ"
+" let g:javascript_conceal_null                 = "ø"
+" let g:javascript_conceal_this                 = "@"
+" let g:javascript_conceal_return               = "⇚"
+" let g:javascript_conceal_undefined            = "¿"
+" let g:javascript_conceal_NaN                  = "ℕ"
+" let g:javascript_conceal_prototype            = "¶"
+" let g:javascript_conceal_static               = "•"
+" let g:javascript_conceal_super                = "Ω"
+" let g:javascript_conceal_arrow_function       = "⇒"
 
-" Add Merlin to rtp
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
 
 " vim-go
 let g:go_fmt_command = "goimports"
@@ -610,7 +481,7 @@ function PyFormat()
 	call setpos('.', pos)
 endfunction
 
-autocmd BufWritePre *.py call PyFormat()
+" autocmd BufWritePre *.py call PyFormat()
 
 " jedi-vim
 let g:jedi#completions_enabled = 0
@@ -620,10 +491,6 @@ let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "0"
-
-" vim-airline
-let g:airline#extensions#virtualenv#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
 
 let g:haskell_conceal_wide = 1
 let g:haskell_multiline_strings = 1
