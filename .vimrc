@@ -205,6 +205,7 @@ endif
 set gcr=a:blinkon0
 set scrolloff=5
 set laststatus=2
+set cmdheight=2
 set wildmenu
 set magic
 set lazyredraw
