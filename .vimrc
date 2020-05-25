@@ -10,7 +10,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
-Plug 'chriskempson/base16-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -53,9 +54,9 @@ set expandtab
 " UI
 set number relativenumber
 set termguicolors
-let base16colorspace=256
+set background=dark
 set term=xterm-256color
-colorscheme base16-tomorrow-night
+colorscheme dracula " alternative: gruvbox
 
 " no one is really happy until you have this shortcuts
 cnoreabbrev W! w! !sudo tee %
@@ -146,7 +147,6 @@ let g:ale_fixers = {
 \}
 
 let g:ale_fix_on_save = 1
-call deoplete#custom#option('sources', {'_': ['ale']})
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
