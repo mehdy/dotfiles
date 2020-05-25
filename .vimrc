@@ -22,16 +22,14 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-eunuch'
 Plug 'Yggdroot/indentLine'
 Plug 'gko/vim-coloresque'
-Plug 'jiangmiao/auto-pairs'
+Plug 'Raimondi/delimitMate'
 
 Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'ycm-core/YouCompleteMe'
 
 Plug 'sheerun/vim-polyglot'
 Plug 'rust-lang/rust.vim'
@@ -128,8 +126,9 @@ nnoremap <silent> <leader>tg :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 " neosnippet
-let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#enable_snipmate_compatibility=1
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+let g:neosnippet#enable_completed_snippet=1
 
 " ale
 let g:ale_sign_error='✗'
@@ -146,13 +145,17 @@ let g:ale_fixers = {
 \   'python': ['black', 'isort'],
 \}
 
-let g:ale_fix_on_save = 1
-
-" deoplete
-let g:deoplete#enable_at_startup = 1
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_key_list_stop_completion = ['<C-y>', '<Enter>']
 
 " rust
 let g:rustfmt_autosave=1
+augroup Racer
+    autocmd!
+    autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
+    autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
+augroup END
 
 " vim-go
 let g:go_fmt_command="goimports"
