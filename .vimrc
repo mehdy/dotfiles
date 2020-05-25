@@ -131,12 +131,12 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 " ale
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '⚠'
-let g:ale_fix_on_save = 1
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%]/[%severity%] %s'
+let g:ale_sign_error='✗'
+let g:ale_sign_warning='⚠'
+let g:ale_fix_on_save=1
+let g:ale_echo_msg_error_str='E'
+let g:ale_echo_msg_warning_str='W'
+let g:ale_echo_msg_format='[%linter%]/[%severity%] %s'
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_fixers = {
@@ -152,20 +152,20 @@ call deoplete#custom#option('sources', {'_': ['ale']})
 let g:deoplete#enable_at_startup = 1
 
 " rust
-let g:rustfmt_autosave = 1
+let g:rustfmt_autosave=1
 
 " vim-go
-let g:go_fmt_command = "goimports"
-let g:go_list_type = "quickfix"
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_generate_tags = 1
-let g:go_metalinter_autosave = 1
+let g:go_fmt_command="goimports"
+let g:go_list_type="quickfix"
+let g:go_highlight_types=1
+let g:go_highlight_fields=1
+let g:go_highlight_functions=1
+let g:go_highlight_methods=1
+let g:go_highlight_operators=1
+let g:go_highlight_extra_types=1
+let g:go_highlight_build_constraints=1
+let g:go_highlight_generate_tags=1
+let g:go_metalinter_autosave=1
 autocmd FileType go nmap ga  :GoAlternate!<CR>
 autocmd FileType go nmap gb  :GoBuild<CR>
 autocmd FileType go nmap gr  :GoRun %<CR>
@@ -173,15 +173,14 @@ autocmd FileType go nmap gt  :GoTest<CR>
 autocmd FileType go nmap gc  :GoCoverageToggle<CR>
 
 " javascript
-let g:javascript_enable_domhtmlcss = 1
-let g:jsx_ext_required = 0
-let g:javascript_plugin_flow = 1
+let g:javascript_enable_domhtmlcss=1
+let g:jsx_ext_required=0
+let g:javascript_plugin_flow=1
 
 " python
 augroup vimrc-python
   autocmd!
   autocmd FileType python setlocal colorcolumn=79 smartindent
-      \ cinwords=False,None,True,and,as,assert,async,await,break,class,continue,def,del,elif,else,except,finally,for,from,global,if,import,in,is,lambda,nonlocal,not,or,pass,raise,return,try,while,with,yield
 augroup END
 
 " HTML
