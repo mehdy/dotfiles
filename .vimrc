@@ -31,6 +31,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
 Plug 'ycm-core/YouCompleteMe'
 
+Plug 'pearofducks/ansible-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -47,7 +48,6 @@ set hidden
 set tabstop=8
 set softtabstop=4
 set shiftwidth=4
-set expandtab
 
 " UI
 set number relativenumber
@@ -129,6 +129,9 @@ let g:tagbar_autofocus = 1
 let g:neosnippet#enable_snipmate_compatibility=1
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 let g:neosnippet#enable_completed_snippet=1
+
+" vim-polyglot
+let g:polyglot_disabled = ['yaml']
 
 " ale
 let g:ale_sign_error='✗'
