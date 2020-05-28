@@ -24,6 +24,8 @@ Plug 'tpope/vim-eunuch'
 Plug 'Yggdroot/indentLine'
 Plug 'gko/vim-coloresque'
 Plug 'Raimondi/delimitMate'
+Plug 'xolox/vim-session'
+Plug 'xolox/vim-misc'
 
 Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
