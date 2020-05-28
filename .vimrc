@@ -24,8 +24,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'Yggdroot/indentLine'
 Plug 'gko/vim-coloresque'
 Plug 'Raimondi/delimitMate'
-Plug 'xolox/vim-session'
-Plug 'xolox/vim-misc'
 
 Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
@@ -91,11 +89,9 @@ noremap <leader>q :bp<CR>
 noremap <leader>w :bn<CR>
 noremap <leader>x :bd<CR>
 
-" session management
-let g:session_directory = "~/.vim/session"
-let g:session_autoload = "no"
-let g:session_autosave = "yes"
-let g:session_command_aliases = 1
+" swap files
+set directory^=~/.vim-swaps//
+set backupdir^=~/.vim-backups//
 
 " Autocmd rules
 " The PC is fast enough, do syntax highlight syncing from start
