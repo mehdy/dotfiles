@@ -1,8 +1,8 @@
 "" Auto install vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 "" Plugins
@@ -13,6 +13,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -45,9 +46,14 @@ call plug#end()
 let mapleader = ','
 
 set hidden
-set tabstop=8
+set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set autoindent
+set expandtab
+set showcmd
+set textwidth=99
+set colorcolumn=99
 
 " UI
 set number relativenumber
@@ -71,9 +77,9 @@ cnoreabbrev Qall qall
 
 " Clipboard
 if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
+    set clipboard=unnamed,unnamedplus
 else
-  set clipboard=unnamed
+    set clipboard=unnamed
 endif
 
 " Basic mappings
@@ -92,14 +98,15 @@ let g:session_command_aliases = 1
 " Autocmd rules
 " The PC is fast enough, do syntax highlight syncing from start
 augroup vimr-sync-fromstart
-  autocmd!
-  autocmd BufEnter * :syntax sync fromstart
+    autocmd!
+    autocmd BufEnter * :syntax sync fromstart
 augroup END
 
 " Remember cursor position
 augroup vimrc-remember-cursor-position
-  autocmd!
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+    autocmd!
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") |
+                \ exe "normal! g`\"" | endif
 augroup END
 
 set autowrite
@@ -108,7 +115,10 @@ set autowrite
 autocmd FileType * setlocal formatoptions-=r formatoptions-=o
 
 " fzf
-nnoremap <silent> <leader>f :FZF<CR>
+nnoremap <silent> <leader>ff :Files<CR>
+nnoremap <silent> <leader>fg :Rg<CR>
+command! -bang -nargs=? -complete=dir Files
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " vim-airline
 let g:airline_powerline_fonts = 1
@@ -116,11 +126,10 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 
 " NERDTree
-let g:plug_window = 'noautocmd vertical topleft new'
 nnoremap <silent> <leader>tt :NERDTreeToggle<CR>
 nnoremap <silent> <leader>tf :NERDTreeFind<CR>
-" If more than one window and previous buffer was NERDTree, go back to it.
-autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
 
 " Tagbar
 nnoremap <silent> <leader>tg :TagbarToggle<CR>
@@ -186,8 +195,8 @@ let g:javascript_plugin_flow=1
 
 " python
 augroup vimrc-python
-  autocmd!
-  autocmd FileType python setlocal colorcolumn=79 smartindent
+    autocmd!
+    autocmd FileType python setlocal smartindent
 augroup END
 
 " HTML
