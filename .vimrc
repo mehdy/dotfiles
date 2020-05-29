@@ -114,9 +114,19 @@ autocmd FileType * setlocal formatoptions-=r formatoptions-=o
 
 " fzf
 nnoremap <silent> <leader>ff :Files<CR>
-nnoremap <silent> <leader>fg :Rg<CR>
+nnoremap <silent> <leader>fg :RgCword<CR>
 command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+function! RgFzfCword(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RgCword call RgFzfCword(expand("<cword>"), <bang>0)
 
 " vim-airline
 let g:airline_powerline_fonts = 1
@@ -126,8 +136,6 @@ let g:airline#extensions#ale#enabled = 1
 " NERDTree
 nnoremap <silent> <leader>tt :NERDTreeToggle<CR>
 nnoremap <silent> <leader>tf :NERDTreeFind<CR>
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
 
 " Tagbar
 nnoremap <silent> <leader>tg :TagbarToggle<CR>
