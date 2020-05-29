@@ -24,6 +24,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'Yggdroot/indentLine'
 Plug 'gko/vim-coloresque'
 Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-sleuth'
 
 Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
@@ -49,11 +50,10 @@ set hidden
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set autoindent
 set expandtab
 set showcmd
-set textwidth=99
-set colorcolumn=99
+set textwidth=120
+set colorcolumn=120
 
 " UI
 set number relativenumber
@@ -191,11 +191,9 @@ let g:javascript_enable_domhtmlcss=1
 let g:jsx_ext_required=0
 let g:javascript_plugin_flow=1
 
-" python
-augroup vimrc-python
-    autocmd!
-    autocmd FileType python setlocal smartindent
-augroup END
-
 " HTML
 autocmd Filetype html setlocal tabstop=2 softtabstop=2 shiftwidth=2
+
+
+" YAML
+autocmd Filetype yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
