@@ -58,7 +58,7 @@ set colorcolumn=120
 " UI
 set number relativenumber
 set hlsearch
-:set list lcs=tab:\¦\ 
+:set list lcs=tab:\¦\
 set termguicolors
 set background=dark
 set term=xterm-256color
@@ -137,6 +137,9 @@ let g:airline#extensions#ale#enabled = 1
 " NERDTree
 nnoremap <silent> <leader>tt :NERDTreeToggle<CR>
 nnoremap <silent> <leader>tf :NERDTreeFind<CR>
+
+" NERDCommenter
+let g:NERDSpaceDelims = 1
 
 " Tagbar
 nnoremap <silent> <leader>tg :TagbarToggle<CR>
