@@ -58,7 +58,7 @@ set colorcolumn=120
 " UI
 set number relativenumber
 set hlsearch
-:set list lcs=tab:\¦\
+set list lcs=tab:\¦\ ,trail:-,extends:>,precedes:<,nbsp:+
 set termguicolors
 set background=dark
 set term=xterm-256color
