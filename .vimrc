@@ -166,6 +166,7 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
 \   'python': ['black', 'isort'],
+\   'html': ['html-beautify'],
 \}
 
 " YouCompleteMe
@@ -184,6 +185,9 @@ augroup END
 let g:go_fmt_command="goimports"
 let g:go_rename_command = "gopls"
 let g:go_list_type="quickfix"
+" Use .golangci.yml inside project instead (https://github.com/fatih/vim-go/issues/2346)
+let g:go_metalinter_autosave_enabled = []
+let g:go_metalinter_enabled = []
 let g:go_highlight_types=1
 let g:go_highlight_fields=1
 let g:go_highlight_functions=1
