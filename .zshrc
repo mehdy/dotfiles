@@ -11,13 +11,13 @@ export ZSH="/home/mehdy/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 COMPLETION_WAITING_DOTS="true"
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_REDUCE_BLANKS
 
 plugins=(
 	ansible
 	bgnotify
-	cargo
 	celery
-	django
 	docker
 	docker-compose
 	fzf

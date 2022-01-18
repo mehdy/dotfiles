@@ -5,6 +5,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" vim-polyglot
+let g:polyglot_disabled = ['yaml']
+
 "" Plugins
 call plug#begin('~/.vim/plugged')
 
@@ -150,8 +153,6 @@ let g:neosnippet#enable_snipmate_compatibility=1
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 let g:neosnippet#enable_completed_snippet=1
 
-" vim-polyglot
-let g:polyglot_disabled = ['yaml']
 
 " ale
 let g:ale_sign_error='✗'
