@@ -21,6 +21,7 @@ plugins=(
 	docker
 	docker-compose
 	fzf
+	gh
 	git
 	golang
 	kubectl
@@ -84,3 +85,4 @@ export SPACESHIP_PROMPT_ORDER=(
 source $ZSH/oh-my-zsh.sh
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+. /home/mehdy/.flossbank/env
