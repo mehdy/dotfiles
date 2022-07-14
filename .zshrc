@@ -45,10 +45,11 @@ plugins=(
 	zsh-syntax-highlighting
 )
 
-if [[ -r "$HOME/.oh-my-zsh/custom/plugins/zsh-async/async.zsh"]]; then
+if [[ -r "$HOME/.oh-my-zsh/custom/plugins/zsh-async/async.zsh" ]]; then
     source $HOME/.oh-my-zsh/custom/plugins/zsh-async/async.zsh
     async_init
 fi
+
 # User configuration
 
 export LANG=en_US.UTF-8
@@ -62,26 +63,9 @@ export ANDROID_HOME="$HOME/Android/Sdk"
 export PATH="/usr/local/go/bin:/snap/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$GOBIN"
 export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$HOME/.cargo/bin:$PATH"
 
-export SPACESHIP_TIME_SHOW=true
-export SPACESHIP_HOST_SHOW=always
-export SPACESHIP_USER_SHOW=always
-export SPACESHIP_BATTERY_SHOW=charged
-export SPACESHIP_PROMPT_ORDER=(
-  battery       # Battery level and status
-  user          # Username section
-  host          # Hostname section
-  dir           # Current directory section
-  git           # Git section (git_branch + git_status)
-  time          # Time stamps section
-  venv          # virtualenv section
-  pyenv         # Pyenv section
-  exec_time     # Execution time
-  line_sep      # Line break
-  vi_mode       # Vi-mode indicator
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
+if [[ ! -d "$ZSH" ]]; then
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
 
 source $ZSH/oh-my-zsh.sh
 
