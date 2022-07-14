@@ -45,9 +45,10 @@ plugins=(
 	zsh-syntax-highlighting
 )
 
-source $HOME/.oh-my-zsh/custom/plugins/zsh-async/async.zsh
-async_init
-
+if [[ -r "$HOME/.oh-my-zsh/custom/plugins/zsh-async/async.zsh"]]; then
+    source $HOME/.oh-my-zsh/custom/plugins/zsh-async/async.zsh
+    async_init
+fi
 # User configuration
 
 export LANG=en_US.UTF-8
@@ -85,4 +86,3 @@ export SPACESHIP_PROMPT_ORDER=(
 source $ZSH/oh-my-zsh.sh
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-. /home/mehdy/.flossbank/env
