@@ -7,6 +7,7 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/mehdy/.oh-my-zsh"
+export KEEP_ZSHRC=yes
 
 if [[ ! -d "${ZSH_CUSTOM:-$ZSH/custom}/themes/powerlevel10k" ]]; then
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$ZSH/custom}/themes/powerlevel10k
@@ -74,7 +75,7 @@ export FZF_DEFAULT_OPTS="--ansi"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 if [[ ! -f "$ZSH/oh-my-zsh.sh" ]]; then
-    ZSH= sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --keep-zshrc
+    ZSH= sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 source $ZSH/oh-my-zsh.sh
