@@ -73,7 +73,7 @@ export FZF_DEFAULT_COMMAND="fdfind --type file --follow --hidden --exclude .git 
 export FZF_DEFAULT_OPTS="--ansi"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-if [[ ! -d "$ZSH/oh-my-zsh.sh" ]]; then
+if [[ ! -f "$ZSH/oh-my-zsh.sh" ]]; then
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
