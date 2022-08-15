@@ -68,6 +68,8 @@ fi
 export LANG=en_US.UTF-8
 export EDITOR='vim'
 
+export GPG_TTY=$TTY
+
 export GOPATH="$HOME/Projects/Go"
 export GOBIN="$GOPATH/bin"
 
@@ -87,5 +89,7 @@ eval "$(pyenv init --path)"
 
 
 source $ZSH/oh-my-zsh.sh
+
+alias gg="gitui"
 
 [[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
