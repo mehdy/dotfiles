@@ -19,6 +19,9 @@ COMPLETION_WAITING_DOTS="true"
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 
+export HISTSIZE=100000000
+export SAVEHIST=$HISTSIZE
+
 plugins=(
 	ansible
 	bgnotify
@@ -75,8 +78,8 @@ export GOBIN="$GOPATH/bin"
 
 export ANDROID_HOME="$HOME/Android/Sdk"
 
-export PATH="/usr/local/go/bin:/snap/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$GOBIN"
-export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$HOME/.cargo/bin:$PATH"
+export PATH="/usr/local/go/bin:/snap/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$GOBIN:$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
 
 export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --exclude .git --color=always"
 export FZF_DEFAULT_OPTS="--ansi"
@@ -87,9 +90,14 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 
 eval "$(pyenv init --path)"
 
-
 source $ZSH/oh-my-zsh.sh
 
 alias gg="gitui"
+alias ls='exa'
+alias l='exa -l --all --group-directories-first --git'
+alias ll='exa -l --all --all --group-directories-first --git'
+alias lt='exa -T --git-ignore --level=2 --group-directories-first'
+alias llt='exa -lT --git-ignore --level=2 --group-directories-first'
+alias lT='exa -T --git-ignore --level=4 --group-directories-first'
 
 [[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
