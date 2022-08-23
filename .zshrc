@@ -8,6 +8,8 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export KEEP_ZSHRC=yes
+zstyle ':omz:update' mode reminder
+zstyle ':omz:update' frequency 7
 
 if [[ ! -d "${ZSH_CUSTOM:-$ZSH/custom}/themes/powerlevel10k" ]]; then
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$ZSH/custom}/themes/powerlevel10k
@@ -23,31 +25,28 @@ export HISTSIZE=100000000
 export SAVEHIST=$HISTSIZE
 
 plugins=(
-	ansible
+	archlinux
 	bgnotify
 	celery
 	docker
 	docker-compose
+	fd
 	fzf
 	gh
 	git
 	golang
+	gpg-agent
 	kubectl
 	minikube
-	node
 	npm
 	nvm
 	pip
 	pipenv
 	pyenv
 	python
-	rbenv
+	ripgrep
 	rust
 	sudo
-	systemd
-	ubuntu
-	vim-interaction
-	vscode
 	zsh-autosuggestions
 	zsh-completions
 	zsh-syntax-highlighting
@@ -71,8 +70,6 @@ fi
 export LANG=en_US.UTF-8
 export EDITOR='vim'
 
-export GPG_TTY=$TTY
-
 export GOPATH="$HOME/Projects/Go"
 export GOBIN="$GOPATH/bin"
 
@@ -87,6 +84,8 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+
+export NVM_LAZY=1
 
 eval "$(pyenv init --path)"
 
