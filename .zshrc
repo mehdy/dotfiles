@@ -34,6 +34,7 @@ plugins=(
 	ripgrep
 	rust
 	sudo
+	tmux
 	zsh-autosuggestions
 	zsh-completions
 	zsh-syntax-highlighting
@@ -56,6 +57,8 @@ fi
 
 export LANG=en_US.UTF-8
 export EDITOR='vim'
+
+export ZSH_TMUX_AUTOSTART=true
 
 export GOPATH="$HOME/Projects/Go"
 export GOBIN="$GOPATH/bin"
