@@ -1,21 +1,8 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export KEEP_ZSHRC=yes
 zstyle ':omz:update' mode reminder
 zstyle ':omz:update' frequency 7
-
-if [[ ! -d "${ZSH_CUSTOM:-$ZSH/custom}/themes/powerlevel10k" ]]; then
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$ZSH/custom}/themes/powerlevel10k
-fi
-
-ZSH_THEME="powerlevel10k/powerlevel10k"
 
 COMPLETION_WAITING_DOTS="true"
 setopt HIST_SAVE_NO_DUPS
@@ -99,4 +86,4 @@ alias lt='exa -T --git-ignore --level=2 --group-directories-first'
 alias llt='exa -lT --git-ignore --level=2 --group-directories-first'
 alias lT='exa -T --git-ignore --level=4 --group-directories-first'
 
-[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
+eval "$(starship init zsh)"

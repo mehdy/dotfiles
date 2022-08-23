@@ -1,0 +1,18 @@
+format = "$all"
+
+[directory]
+truncation_symbol = "…/"
+truncate_to_repo = false
+fish_style_pwd_dir_length = 1
+
+[kubernetes]
+disabled = false
+
+[status]
+disabled = false
+
+[sudo]
+disabled = false
+
+[time]
+disabled = false
