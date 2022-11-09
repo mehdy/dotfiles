@@ -65,6 +65,8 @@ return packer.startup(function(use)
   use "nvim-treesitter/nvim-treesitter"
   use "windwp/nvim-autopairs"
 
+  use "numToStr/Comment.nvim"
+  use "JoosepAlviste/nvim-ts-context-commentstring"
 
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then
