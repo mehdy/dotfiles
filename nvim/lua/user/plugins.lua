@@ -62,11 +62,13 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope.nvim"
   use "nvim-telescope/telescope-media-files.nvim"
 
-  use "nvim-treesitter/nvim-treesitter"
+  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
   use "windwp/nvim-autopairs"
 
   use "numToStr/Comment.nvim"
   use "JoosepAlviste/nvim-ts-context-commentstring"
+
+  use "lewis6991/gitsigns.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then
