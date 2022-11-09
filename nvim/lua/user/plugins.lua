@@ -70,6 +70,9 @@ return packer.startup(function(use)
 
   use "lewis6991/gitsigns.nvim"
 
+  use "kyazdani42/nvim-tree.lua"
+  use "kyazdani42/nvim-web-devicons"
+
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then
     require("packer").sync()
