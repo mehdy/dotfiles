@@ -61,3 +61,5 @@ keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>f", "<cmd>Telescope live_grep<cr>", opts)
 
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+
+keymap("n", "<leader>g", ":lua _LAZYGIT_TOGGLE()<cr>", opts)
