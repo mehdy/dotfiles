@@ -82,6 +82,7 @@ return packer.startup(function(use)
 
 	use "nvim-lualine/lualine.nvim"
 	use "moll/vim-bbye"
+	use "lewis6991/impatient.nvim"
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	if PACKER_BOOTSTRAP then
