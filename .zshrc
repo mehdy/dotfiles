@@ -56,9 +56,9 @@ fi
 # User configuration
 
 export LANG=en_US.UTF-8
-export EDITOR='vim'
 
 export ZSH_TMUX_AUTOSTART=true
+export EDITOR='nvim'
 
 export GOPATH="$HOME/Projects/Go"
 export GOBIN="$GOPATH/bin"
@@ -81,6 +81,7 @@ eval "$(pyenv init --path)"
 
 source $ZSH/oh-my-zsh.sh
 
+alias n="nvim"
 alias gg="gitui"
 alias ls='exa'
 alias l='exa -l --all --group-directories-first --git'
