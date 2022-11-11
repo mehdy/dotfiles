@@ -85,6 +85,7 @@ return packer.startup(function(use)
 	use "lewis6991/impatient.nvim"
 	use "lukas-reineke/indent-blankline.nvim"
 	use "RRethy/vim-illuminate"
+	use "preservim/tagbar"
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	if PACKER_BOOTSTRAP then
