@@ -23,8 +23,8 @@ vim.cmd [[
 keymap("n", "<leader><space>", ":noh<CR>", opts)
 
 -- Split windows
-keymap("n", "<leader>j", ":split<CR>", opts)
-keymap("n", "<leader>l", ":vsplit<CR>", opts)
+keymap("n", "<leader>s", ":split<CR>", opts)
+keymap("n", "<leader>v", ":vsplit<CR>", opts)
 
 -- Better window navigation
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -33,10 +33,10 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Resize with arrows
-keymap("n", "<C-S-k>", ":resize -2<CR>", opts)
-keymap("n", "<C-S-j>", ":resize +2<CR>", opts)
-keymap("n", "<C-S-h>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-S-l>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-Up>", ":resize -2<CR>", opts)
+keymap("n", "<C-Down>", ":resize +2<CR>", opts)
+keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<leader>q", ":bprevious<CR>", opts)
@@ -59,9 +59,9 @@ keymap("v", "<S-Tab>", "<gv", opts)
 
 -- Extensions
 keymap("n", "<leader>f", "<cmd>Telescope find_files<CR>", opts)
-keymap("n", "<leader>s", "<cmd>Telescope live_grep<CR>", opts)
+keymap("n", "<leader>g", "<cmd>Telescope live_grep<CR>", opts)
 keymap("n", "<leader>e", ":NvimTreeFindFile<CR>", opts)
-keymap("n", "<leader>ee", ":NvimTreeToggle<CR>", opts)
-keymap("n", "<leader>t", ":TagbarToggle<CR>", opts)
+keymap("n", "<leader>tf", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>tg", ":TagbarToggle<CR>", opts)
 
 keymap("n", "<C-g>", ":lua _LAZYGIT_TOGGLE()<CR>", opts)
