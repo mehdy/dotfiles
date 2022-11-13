@@ -31,6 +31,14 @@ window:
   # The value `0.0` is completely transparent and `1.0` is opaque.
   opacity: 0.75
 
+  # Window padding (changes require restart)
+  #
+  # Blank space added around the window in pixels. This padding is scaled
+  # by DPI and the specified value is always added at both opposing sides.
+  padding:
+    x: 5
+    y: 5
+
   # Startup Mode (changes require restart)
   #
   # Values for `startup_mode`:
