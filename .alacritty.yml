@@ -98,6 +98,9 @@ font:
     # value specified for the normal font.
     family: Hack
 
+  # Point size
+  size: 15.0
+
 # Live config reload (changes require restart)
 live_config_reload: true
 
