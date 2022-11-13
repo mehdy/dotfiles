@@ -58,6 +58,7 @@ fi
 export LANG=en_US.UTF-8
 
 export ZSH_TMUX_AUTOSTART=true
+export ZSH_TMUX_AUTOCONNECT=false
 export EDITOR='nvim'
 
 export GOPATH="$HOME/Projects/Go"
