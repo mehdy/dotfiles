@@ -8,5 +8,5 @@ configs.setup({
 	ignore_install = { "" },
 	highlight = { enable = true },
 	autopairs = { enable = true },
-	indent = { enable = true },
+	indent = { enable = false },
 })
