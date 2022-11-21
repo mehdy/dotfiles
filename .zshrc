@@ -76,7 +76,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
-export NVM_LAZY=1
+zstyle ':omz:plugins:nvm' lazy true
 
 eval "$(pyenv init --path)"
 
