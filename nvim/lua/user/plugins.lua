@@ -66,6 +66,7 @@ return packer.startup(function(use)
 
 	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 	use "windwp/nvim-autopairs"
+	use "ThePrimeagen/refactoring.nvim"
 
 	use "numToStr/Comment.nvim"
 	use "JoosepAlviste/nvim-ts-context-commentstring"
