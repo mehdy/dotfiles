@@ -14,6 +14,7 @@ export SAVEHIST=$HISTSIZE
 plugins=(
 	archlinux
 	bgnotify
+	brew
 	celery
 	docker
 	docker-compose
@@ -55,6 +56,8 @@ fi
 
 # User configuration
 
+FPATH="/home/linuxbrew/.linuxbrew/share/zsh/site-functions:${FPATH}"
+
 export LANG=en_US.UTF-8
 
 export ZSH_TMUX_AUTOSTART=true
@@ -77,8 +80,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
 zstyle ':omz:plugins:nvm' lazy true
-
-eval "$(pyenv init --path)"
 
 source $ZSH/oh-my-zsh.sh
 
