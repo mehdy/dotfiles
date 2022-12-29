@@ -6,6 +6,7 @@ local servers = {
 	"html",
 	"jsonls",
 	"pyright",
+	"prosemd_lsp",
 	"rust_analyzer",
 	"sumneko_lua",
 	"tsserver",
