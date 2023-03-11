@@ -61,6 +61,7 @@ return packer.startup(function(use)
 	use("ray-x/lsp_signature.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("github/copilot.vim")
+	use("puremourning/vimspector")
 
 	use("nvim-telescope/telescope.nvim")
 	use("nvim-telescope/telescope-media-files.nvim")
@@ -73,6 +74,7 @@ return packer.startup(function(use)
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 
 	use("lewis6991/gitsigns.nvim")
+	use("tpope/vim-fugitive")
 
 	use("kyazdani42/nvim-tree.lua")
 	use("kyazdani42/nvim-web-devicons")
