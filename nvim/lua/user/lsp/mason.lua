@@ -5,10 +5,10 @@ local servers = {
 	"gopls",
 	"html",
 	"jsonls",
+	"lua_ls",
 	"pyright",
 	"prosemd_lsp",
 	"rust_analyzer",
-	"sumneko_lua",
 	"tsserver",
 	"yamlls",
 }
