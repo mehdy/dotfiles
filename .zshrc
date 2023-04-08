@@ -12,7 +12,6 @@ export HISTSIZE=100000000
 export SAVEHIST=$HISTSIZE
 
 plugins=(
-	archlinux
 	bgnotify
 	brew
 	celery
@@ -36,10 +35,17 @@ plugins=(
 	rust
 	sudo
 	tmux
+	vscode
 	zsh-autosuggestions
 	zsh-completions
 	zsh-syntax-highlighting
 )
+
+if [[ $(uname) == "Darwin" ]]; then
+	plugins+=(macos)
+else
+	plugins+=(archlinux)
+fi
 
 if [[ ! -d "$ZSH/custom/plugins/zsh-autosuggestions" ]]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$ZSH/custom}/plugins/zsh-autosuggestions
@@ -69,8 +75,8 @@ export GOBIN="$GOPATH/bin"
 
 export ANDROID_HOME="$HOME/Android/Sdk"
 
-export PATH="/usr/local/go/bin:/snap/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin:$GOBIN:$HOME/.cargo/bin:$PATH"
-export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:$GOBIN"
+export PATH="$PATH:$HOME/.cargo/bin"
 
 export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --exclude .git --color=always"
 export FZF_DEFAULT_OPTS="--ansi"
