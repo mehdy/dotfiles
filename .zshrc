@@ -75,19 +75,14 @@ export GOBIN="$GOPATH/bin"
 
 export ANDROID_HOME="$HOME/Android/Sdk"
 
-export PATH="$PATH:$GOBIN"
+export PATH="$PATH:$GOBIN:$HOME/.docker/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 
 export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --exclude .git --color=always"
 export FZF_DEFAULT_OPTS="--ansi"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
 zstyle ':omz:plugins:nvm' lazy true
-
-eval "$(pyenv init --path)"
 
 source $ZSH/oh-my-zsh.sh
 
