@@ -52,8 +52,8 @@ cmp.setup({
 		end,
 	},
 	mapping = {
-		["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
+		["<Up>"] = cmp.mapping.select_prev_item(),
+		["<Down>"] = cmp.mapping.select_next_item(),
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -63,7 +63,7 @@ cmp.setup({
 		["<Tab>"] = cmp.mapping(function(fallback)
 			local copilot_keys = vim.fn["copilot#Accept"]()
 			if cmp.visible() then
-				cmp.select_next_item()
+				cmp.mapping.confirm({ select = true })()
 			elseif copilot_keys ~= "" then
 				vim.api.nvim_feedkeys(copilot_keys, "i", true)
 			elseif luasnip.expandable() then
@@ -98,6 +98,7 @@ cmp.setup({
 			-- Kind icons
 			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
 			vim_item.menu = ({
+				copilot = "[Copilot]",
 				nvim_lsp = "[LSP]",
 				luasnip = "[Snippet]",
 				buffer = "[Buffer]",
@@ -107,6 +108,7 @@ cmp.setup({
 		end,
 	},
 	sources = {
+		{ name = "copilot" },
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 		{ name = "buffer" },

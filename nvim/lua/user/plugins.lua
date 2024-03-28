@@ -76,7 +76,14 @@ return packer.startup(function(use)
 	use("lewis6991/gitsigns.nvim")
 	use("tpope/vim-fugitive")
 
-	use("kyazdani42/nvim-tree.lua")
+	use("fatih/vim-go")
+
+	use({
+		"kyazdani42/nvim-tree.lua",
+		requires = {
+			"nvim-tree/nvim-web-devicons", -- optional
+		},
+	})
 	use("kyazdani42/nvim-web-devicons")
 
 	use("akinsho/bufferline.nvim")

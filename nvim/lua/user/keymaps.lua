@@ -7,7 +7,7 @@ vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
 -- Better control of neovim
-vim.cmd [[
+vim.cmd([[
 	cnoreabbrev W! w! !sudo tee %
 	cnoreabbrev Wq wq !sudo tee %
 	cnoreabbrev WQ wq !sudo tee %
@@ -17,7 +17,7 @@ vim.cmd [[
 	cnoreabbrev wQ wQ
 	cnoreabbrev Q q
 	cnoreabbrev Qall qall
-]]
+]])
 
 -- clear hlsearch
 keymap("n", "<leader><space>", ":noh<CR>", opts)
@@ -33,10 +33,10 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<A-Up>", ":resize -2<CR>", opts)
+keymap("n", "<A-Down>", ":resize +2<CR>", opts)
+keymap("n", "<A-Left>", ":vertical resize -2<CR>", opts)
+keymap("n", "<A-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<leader>q", ":bprevious<CR>", opts)

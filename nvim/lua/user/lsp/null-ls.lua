@@ -18,6 +18,10 @@ null_ls.setup({
 				group = augroup,
 				buffer = bufnr,
 				callback = function()
+					vim.lsp.buf.code_action({
+						context = { only = { "source.organizeImports" } },
+						apply = true,
+					})
 					vim.lsp.buf.format({ bufnr = bufnr })
 				end,
 			})
@@ -36,6 +40,7 @@ null_ls.setup({
 		diagnostics.hadolint,
 		diagnostics.ltrs,
 		diagnostics.pylama,
+		diagnostics.ruff,
 		diagnostics.selene,
 		diagnostics.yamllint,
 		formatting.black,
@@ -44,8 +49,9 @@ null_ls.setup({
 		formatting.eslint_d,
 		formatting.fixjson,
 		formatting.gofumpt,
-		formatting.goimports_reviser,
-		formatting.reorder_python_imports,
+		formatting.goimports,
+		formatting.golines.with({ extra_args = { "-m", "120" } }),
+		formatting.ruff,
 		formatting.rustfmt,
 		formatting.yamlfmt,
 		formatting.stylua,

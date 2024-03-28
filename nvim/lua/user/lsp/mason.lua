@@ -8,6 +8,7 @@ local servers = {
 	"lua_ls",
 	"pyright",
 	"prosemd_lsp",
+	"ruff_lsp",
 	"rust_analyzer",
 	"tsserver",
 	"yamlls",
