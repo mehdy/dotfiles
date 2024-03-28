@@ -18,7 +18,17 @@
     line-numbers = true
 
 [merge]
-    conflictstyle = diff3
+    conflictstyle = zdiff3
 
 [diff]
     colorMoved = default
+	algorithm = histogram
+
+[push]
+	autoSetupRemote = true
+
+[pull]
+	rebase = true
+
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
