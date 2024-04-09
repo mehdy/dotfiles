@@ -123,6 +123,12 @@ nvim_tree.setup({
 		width = 30,
 		side = "right",
 	},
+	filters = {
+		custom = {
+			"^node_modules$",
+			"^.git$",
+		},
+	},
 })
 
 local function open_nvim_tree(data)
