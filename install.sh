@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-ln -sf $PWD/{.alacritty.yml,.vimrc,.zshrc,.tmux.conf,.gitconfig} ~/
+ln -sf $PWD/{.alacritty.toml,.vimrc,.zshrc,.tmux.conf,.gitconfig} ~/
 ln -sf $PWD/starship.toml ~/.config/
 ln -sf $PWD/nvim ~/.config/
 
