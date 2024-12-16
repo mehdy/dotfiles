@@ -11,6 +11,7 @@
 
 [interactive]
 	diffFilter = delta --color-only
+
 [add.interactive]
 	useBuiltin = false
 
@@ -31,6 +32,9 @@
 
 [pull]
 	rebase = true
+
+[remote "origin"]
+	prune = true
 
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/

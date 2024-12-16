@@ -17,7 +17,6 @@ plugins=(
 	celery
 	docker
 	docker-compose
-	fd
 	fzf
 	gh
 	git
@@ -31,7 +30,6 @@ plugins=(
 	pipenv
 	pyenv
 	python
-	ripgrep
 	rust
 	sudo
 	tmux

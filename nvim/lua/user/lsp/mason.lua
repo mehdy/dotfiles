@@ -10,7 +10,7 @@ local servers = {
 	"prosemd_lsp",
 	"ruff_lsp",
 	"rust_analyzer",
-	"tsserver",
+	"ts_ls",
 	"yamlls",
 }
 
