@@ -68,6 +68,8 @@ export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_AUTOCONNECT=false
 export EDITOR='nvim'
 
+export ZSH_PYENV_QUIET=true
+
 export GOPATH="$HOME/Projects/Go"
 export GOBIN="$GOPATH/bin"
 
