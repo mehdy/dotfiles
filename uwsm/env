@@ -1,0 +1,13 @@
+export XCURSOR_SIZE=24
+export HYPRCURSOR_SIZE=24
+
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+export QT_QPA_PLATFORM=wayland
+
+export ROFI_THEME_DIR=$HOME/.config/rofi/launchers/type-1
+export ROFI_THEME_STYLE=style-6
+
+# Default to dark mode
+export QT_QPA_PLATFORMTHEME=qt6ct   # for Qt apps
+
+

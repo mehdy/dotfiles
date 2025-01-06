@@ -49,9 +49,6 @@ button:hover {
 }
 
 /* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: #a37800;
-}
 
 #workspaces button {
     padding: 0 5px;
@@ -93,7 +90,11 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #power-profiles-daemon,
+#language,
 #mpd {
+	background-color: rgba(230, 230, 230, 0.5);
+	margin: 3px 0 5px 0;
+	border-radius: 50px;
     padding: 0 10px;
     color: #ffffff;
 }
@@ -113,18 +114,9 @@ button:hover {
     margin-right: 0;
 }
 
-#clock {
-    background-color: #64727D;
-}
-
-#battery {
-    background-color: #ffffff;
-    color: #000000;
-}
-
 #battery.charging, #battery.plugged {
     color: #ffffff;
-    background-color: #26A65B;
+    background-color: rgba(30, 200, 60, 0.3);
 }
 
 @keyframes blink {
@@ -194,13 +186,15 @@ label:focus {
 }
 
 #pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
+    background-color: rgba(255, 255, 255, 0.2);
+	border-radius: 50px;
+	margin: 5px;
+    color: #ffffff;
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
+    background-color: rgba(100, 100, 100, 0.3);
+    color: #dfdfdf;
 }
 
 #wireplumber {
@@ -274,11 +268,6 @@ label:focus {
 }
 
 #language {
-    background: #00b093;
-    color: #740864;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
 }
 
 #keyboard-state {
@@ -325,3 +314,4 @@ label:focus {
 #privacy-item.audio-out {
     background-color: #0069d4;
 }
+
