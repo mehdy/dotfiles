@@ -27,12 +27,11 @@ plugins=(
 	npm
 	nvm
 	pip
-	pipenv
-	pyenv
 	python
 	rust
 	sudo
 	tmux
+	uv
 	vscode
 	zsh-autosuggestions
 	zsh-completions
@@ -68,8 +67,6 @@ export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_AUTOCONNECT=false
 export EDITOR='nvim'
 
-export ZSH_PYENV_QUIET=true
-
 export GOPATH="$HOME/Projects/Go"
 export GOBIN="$GOPATH/bin"
 
@@ -77,6 +74,7 @@ export ANDROID_HOME="$HOME/Android/Sdk"
 
 export PATH="$PATH:$GOBIN:$HOME/.docker/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --exclude .git --color=always"
 export FZF_DEFAULT_OPTS="--ansi"

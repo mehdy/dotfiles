@@ -55,6 +55,7 @@
 			"class<org.telegram.desktop>": " ",
 			"class<code>": "󰨞 ",
 			"class<slack>": " ",
+			"class<obsidian>": "  ",
 	},
         "format-icons": {
             "urgent": "",
@@ -144,23 +145,23 @@
         },
         "format": "{icon} {capacity}%",
         "format-full": "{icon} {capacity}%",
-        "format-charging": "  {capacity}%",
+        "format-charging": "{icon} {capacity}%",
         "format-plugged": "  {capacity}%",
         "format-alt": "{icon} {time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": {
             "charging": [
-                "󰢜",
-                "󰂆",
-                "󰂇",
-                "󰂈",
-                "󰢝",
-                "󰂉",
-                "󰢞",
-                "󰂊",
-                "󰂋",
-                "󰂅"
+                "󰢜 ",
+                "󰂆 ",
+                "󰂇 ",
+                "󰂈 ",
+                "󰢝 ",
+                "󰂉 ",
+                "󰢞 ",
+                "󰂊 ",
+                "󰂋 ",
+                "󰂅 "
             ],
             "default": [
                 "󰁺",
@@ -175,7 +176,6 @@
                 "󰁹"
             ]
         }
-        // "format-icons": [" ", " ", " ", " ", " "]
     },
     "power-profiles-daemon": {
       "format": "{icon}",
@@ -220,12 +220,13 @@
         "on-click": "pavucontrol"
     },
     "custom/media": {
-        "format": "{0} {1}",
+        "format": "{icon} {0}",
         "return-type": "json",
-        "max-length": 20,
+        "max-length": 300,
         "format-icons": {
-            "spotify": "",
-            "default": "🎜"
+            "spotify": " ",
+			"kdeconnect": " ",
+            "default": "🎜 "
         },
         "escape": true,
         "on-click": "playerctl play-pause",
