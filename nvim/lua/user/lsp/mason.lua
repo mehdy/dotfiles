@@ -6,6 +6,7 @@ local servers = {
 	"html",
 	"jsonls",
 	"lua_ls",
+	"ltex",
 	"pyright",
 	"prosemd_lsp",
 	"ruff",
