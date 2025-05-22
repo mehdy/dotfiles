@@ -12,12 +12,14 @@ export HISTSIZE=100000000
 export SAVEHIST=$HISTSIZE
 
 plugins=(
+	archlinux
 	bgnotify
 	brew
 	celery
 	docker
 	docker-compose
 	fzf
+	gcloud
 	gh
 	git
 	golang
@@ -25,24 +27,18 @@ plugins=(
 	kubectl
 	minikube
 	npm
-	nvm
 	pip
 	python
 	rust
 	sudo
 	tmux
 	uv
+	volta
 	vscode
 	zsh-autosuggestions
 	zsh-completions
 	zsh-syntax-highlighting
 )
-
-if [[ $(uname) == "Darwin" ]]; then
-	plugins+=(macos)
-else
-	plugins+=(archlinux)
-fi
 
 if [[ ! -d "$ZSH/custom/plugins/zsh-autosuggestions" ]]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$ZSH/custom}/plugins/zsh-autosuggestions
@@ -80,7 +76,6 @@ export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --exclude .git --co
 export FZF_DEFAULT_OPTS="--ansi"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-zstyle ':omz:plugins:nvm' lazy true
 
 source $ZSH/oh-my-zsh.sh
 
