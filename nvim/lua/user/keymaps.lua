@@ -8,15 +8,15 @@ vim.g.maplocalleader = ","
 
 -- Better control of neovim
 vim.cmd([[
-	cnoreabbrev W! w! !sudo tee %
-	cnoreabbrev Wq wq !sudo tee %
-	cnoreabbrev WQ wq !sudo tee %
-	cnoreabbrev W w !sudo tee %
+	cnoreabbrev sw w !sudo tee %
+	cnoreabbrev W! w!
+	cnoreabbrev Wq wq
+	cnoreabbrev Wqa wqa
+	cnoreabbrev W w
 	cnoreabbrev Q! q!
-	cnoreabbrev Qall! qall!
-	cnoreabbrev wQ wQ
+	cnoreabbrev Qa! qa!
 	cnoreabbrev Q q
-	cnoreabbrev Qall qall
+	cnoreabbrev Qa qa
 ]])
 
 -- clear hlsearch

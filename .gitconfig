@@ -42,5 +42,8 @@
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
 
-[includeIf "gitdir:~/Projects/github.com/epidemicsound/"]
-	path = ~/Projects/github.com/epidemicsound/.gitconfig
+[url "ssh://git@gitlab.com/"]
+	insteadOf = https://gitlab.com/
+
+[includeIf "gitdir:~/Projects/gitlab.com/a11s.ai/"]
+	path = ~/Projects/gitlab.com/a11s.ai/.gitconfig

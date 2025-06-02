@@ -7,10 +7,9 @@ local servers = {
 	"jsonls",
 	"lua_ls",
 	"ltex",
-	"pyright",
 	"prosemd_lsp",
+	"pyright",
 	"ruff",
-	"rust_analyzer",
 	"ts_ls",
 	"yamlls",
 }

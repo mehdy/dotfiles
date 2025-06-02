@@ -1,11 +1,11 @@
 return {
-	{ "nvim-lua/popup.nvim" },   -- An implementation of the Popup API from vim in Neovim
+	{ "nvim-lua/popup.nvim" }, -- An implementation of the Popup API from vim in Neovim
 	{ "nvim-lua/plenary.nvim" }, -- Useful lua functions used ny lots of plugins
 	{ "folke/tokyonight.nvim" }, -- colorscheme
 
-	{ "hrsh7th/nvim-cmp" },      -- The completion plugin
-	{ "hrsh7th/cmp-buffer" },    -- buffer completions
-	{ "hrsh7th/cmp-path" },      -- path completions
+	{ "hrsh7th/nvim-cmp" }, -- The completion plugin
+	{ "hrsh7th/cmp-buffer" }, -- buffer completions
+	{ "hrsh7th/cmp-path" }, -- path completions
 	{ "saadparwaiz1/cmp_luasnip" }, -- snippet completions
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/cmp-nvim-lua" },
@@ -16,14 +16,14 @@ return {
 			"nvim-telescope/telescope.nvim",
 		},
 	},
-	{ "L3MON4D3/LuaSnip" },          -- snippet engine
+	{ "L3MON4D3/LuaSnip" }, -- snippet engine
 	{ "rafamadriz/friendly-snippets" }, -- a bunch of snippets to use
 
-	{ "neovim/nvim-lspconfig" },     -- enable LSP
-	{ "williamboman/mason.nvim" },   -- simple to use language server installer
+	{ "neovim/nvim-lspconfig" }, -- enable LSP
+	{ "williamboman/mason.nvim" }, -- simple to use language server installer
 	{ "williamboman/mason-lspconfig.nvim" },
 	{ "ray-x/lsp_signature.nvim" },
-	{ "nvimtools/none-ls.nvim",           dependencies = { "nvimtools/none-ls-extras.nvim" } },
+	{ "nvimtools/none-ls.nvim", dependencies = { "nvimtools/none-ls-extras.nvim" } },
 	{ "github/copilot.vim" },
 	{ "puremourning/vimspector" },
 	{ "mfussenegger/nvim-dap" },
@@ -35,7 +35,7 @@ return {
 	{ "nvim-telescope/telescope.nvim" },
 	{ "nvim-telescope/telescope-media-files.nvim" },
 
-	{ "nvim-treesitter/nvim-treesitter",            build = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	{ "windwp/nvim-autopairs" },
 	{ "ThePrimeagen/refactoring.nvim" },
 
@@ -68,5 +68,20 @@ return {
 	{ "RRethy/vim-illuminate" },
 	{ "preservim/tagbar" },
 
-	{ "simrat39/rust-tools.nvim" },
+	{
+		"mrcjkb/rustaceanvim",
+		version = "^6",
+	},
+	{
+		"saecki/crates.nvim",
+		tag = "stable",
+		config = function()
+			require("crates").setup()
+		end,
+	},
+
+	{
+		"kylechui/nvim-surround",
+		version = "^3.0.0",
+	},
 }

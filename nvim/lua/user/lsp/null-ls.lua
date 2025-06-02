@@ -48,6 +48,8 @@ null_ls.setup({
 		formatting.gofumpt,
 		formatting.goimports,
 		formatting.golines.with({ extra_args = { "-m", "120" } }),
+		formatting.leptosfmt,
+		formatting.prettier,
 		formatting.yamlfmt,
 		formatting.stylua,
 	},

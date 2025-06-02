@@ -54,6 +54,21 @@ fi
 
 
 # User configuration
+# Track last sourced .extra.zshrc to avoid duplicate sourcing
+_last_sourced_extra=""
+
+function source_extra_zshrc_if_exists() {
+  local extra_rc="$PWD/.extra.zsh"
+  if [[ -f "$extra_rc" && "$extra_rc" != "$_last_sourced_extra" ]]; then
+    source "$extra_rc"
+    _last_sourced_extra="$extra_rc"
+  fi
+}
+
+# Hook: when changing directories
+function chpwd() {
+  source_extra_zshrc_if_exists
+}
 
 FPATH="/home/linuxbrew/.linuxbrew/share/zsh/site-functions:${FPATH}"
 
@@ -89,3 +104,6 @@ alias llt='exa -lT --git-ignore --level=2 --group-directories-first'
 alias lT='exa -T --git-ignore --level=4 --group-directories-first'
 
 eval "$(starship init zsh)"
+
+# Also run it once when the shell starts
+source_extra_zshrc_if_exists
