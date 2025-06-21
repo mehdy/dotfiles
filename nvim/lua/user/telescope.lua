@@ -9,7 +9,7 @@ local actions = require("telescope.actions")
 
 telescope.setup({
 	defaults = {
-		file_ignore_patterns = { ".git/", "node_modules/", "vendor/" },
+		file_ignore_patterns = { ".git/", "node_modules/", "vendor/", "go.sum", "go.mod" },
 
 		prompt_prefix = " ",
 		selection_caret = " ",

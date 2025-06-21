@@ -23,18 +23,6 @@ chars = "\u001Bd"
 key = "D"
 mods = "Alt"
 
-[[keyboard.bindings]]
-chars = "\u001BOH"
-key = "Left"
-mode = "AppCursor"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "\u001BOF"
-key = "Right"
-mode = "AppCursor"
-mods = "Command"
-
 [general]
 live_config_reload = true
 

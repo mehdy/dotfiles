@@ -5,6 +5,7 @@ zstyle ':omz:update' mode reminder
 zstyle ':omz:update' frequency 7
 
 COMPLETION_WAITING_DOTS="true"
+ZLE_REMOVE_SUFFIX_CHARS=""
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 
@@ -73,12 +74,13 @@ function chpwd() {
 FPATH="/home/linuxbrew/.linuxbrew/share/zsh/site-functions:${FPATH}"
 
 export LANG=en_US.UTF-8
+export TERM=tmux-256color
 
 export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_AUTOCONNECT=false
 export EDITOR='nvim'
 
-export GOPATH="$HOME/Projects/Go"
+export GOPATH="$HOME/projects/go"
 export GOBIN="$GOPATH/bin"
 
 export ANDROID_HOME="$HOME/Android/Sdk"
