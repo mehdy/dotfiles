@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+ln -sf $PWD/root.gitignore ~/.gitignore
 ln -sf $PWD/{.alacritty.toml,.vimrc,.zshrc,.tmux.conf,.gitconfig} ~/
 ln -sf $PWD/{nvim,starship.toml} ~/.config/
 
