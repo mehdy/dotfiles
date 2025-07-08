@@ -27,16 +27,16 @@ keymap("n", "<leader>s", ":split<CR>", opts)
 keymap("n", "<leader>v", ":vsplit<CR>", opts)
 
 -- Better window navigation
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", "<C-Down>", "<C-w>j", opts)
+keymap("n", "<C-Left>", "<C-w>h", opts)
+keymap("n", "<C-Up>", "<C-w>k", opts)
+keymap("n", "<C-Right>", "<C-w>l", opts)
 
 -- Resize with arrows
-keymap("n", "<A-Up>", ":resize -2<CR>", opts)
-keymap("n", "<A-Down>", ":resize +2<CR>", opts)
-keymap("n", "<A-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<A-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-S-Up>", ":resize -2<CR>", opts)
+keymap("n", "<C-S-Down>", ":resize +2<CR>", opts)
+keymap("n", "<C-S-Left>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-S-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<leader>q", ":bprevious<CR>", opts)
@@ -64,4 +64,17 @@ keymap("n", "<leader>e", ":NvimTreeFindFile<CR>", opts)
 keymap("n", "<leader>tf", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<leader>tg", ":TagbarToggle<CR>", opts)
 
-keymap("n", "<C-g>", ":lua _LAZYGIT_TOGGLE()<CR>", opts)
+-- LSP
+keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover({border='rounded'})<CR>", opts)
+keymap("n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+
+keymap("n", "lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
+keymap("n", "la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+keymap("n", "lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+
+keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+keymap("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+keymap("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+keymap("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
