@@ -20,7 +20,7 @@ null_ls.setup({
 						context = { only = { "source.organizeImports" } },
 						apply = true,
 					})
-					vim.lsp.buf.format({ async = false, bufnr = bufnr })
+					vim.lsp.buf.format({ async = false, timeout_ms = 3000, bufnr = bufnr })
 				end,
 			})
 		end

@@ -6,6 +6,7 @@ ln -sf $PWD/{nvim,starship.toml} ~/.config/
 
 if [[ `uname` == "Linux" ]]; then
 	ln -sf $PWD/{hypr,uwsm,waybar,dunst} ~/.config/
+	ln -sf $PWD/calendar_notificaiton_killer.zsh ~/.local/bin/
 fi
 
 if [[ ! -d ~/.tmux/plugins/tpm ]]; then
