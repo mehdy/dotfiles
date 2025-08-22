@@ -55,15 +55,15 @@ fi
 
 
 # User configuration
-# Track last sourced .extra.zshrc to avoid duplicate sourcing
+# Track last sourced .extra.zsh to avoid duplicate sourcing
 _last_sourced_extra=""
 
 function source_extra_zshrc_if_exists() {
-  local extra_rc="$PWD/.extra.zsh"
-  if [[ -f "$extra_rc" && "$extra_rc" != "$_last_sourced_extra" ]]; then
-    source "$extra_rc"
-    _last_sourced_extra="$extra_rc"
-  fi
+    local extra_rc="${1:-$PWD}/.extra.zsh"
+    if [[ -f "$extra_rc" && "$extra_rc" != "$_last_sourced_extra" ]]; then
+        source "$extra_rc"
+        _last_sourced_extra="$extra_rc"
+    fi
 }
 
 # Hook: when changing directories
@@ -85,9 +85,12 @@ export GOBIN="$GOPATH/bin"
 
 export ANDROID_HOME="$HOME/Android/Sdk"
 
-export PATH="$PATH:$GOBIN:$HOME/.docker/bin"
-export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="$PATH:$HOME/.local/bin"
+source "$HOME/.cargo/env"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.docker/bin:$PATH"
+export PATH="$GOBIN:$PATH"
 
 export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --exclude .git --color=always"
 export FZF_DEFAULT_OPTS="--ansi"
@@ -96,6 +99,8 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 source $ZSH/oh-my-zsh.sh
 
+alias watch='watch '
+alias sudo='sudo '
 alias n="nvim"
 alias gg="gitui"
 alias ls='exa'
@@ -108,4 +113,5 @@ alias lT='exa -T --git-ignore --level=4 --group-directories-first'
 eval "$(starship init zsh)"
 
 # Also run it once when the shell starts
+source_extra_zshrc_if_exists $HOME
 source_extra_zshrc_if_exists

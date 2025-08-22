@@ -46,6 +46,7 @@ return {
 
 	{ "nvim-telescope/telescope.nvim" },
 	{ "nvim-telescope/telescope-media-files.nvim" },
+	{ "nvim-telescope/telescope-live-grep-args.nvim" },
 
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	{ "windwp/nvim-autopairs" },

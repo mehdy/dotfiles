@@ -31,12 +31,12 @@ local options = {
 	sidescrolloff = 5, -- minimal number of screen columns either side of cursor if wrap is `false`
 }
 
-vim.opt.shortmess:append "c"
+vim.opt.shortmess:append("c")
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
-vim.cmd [[autocmd FileType * setlocal formatoptions-=r formatoptions-=o]]
+vim.cmd([[autocmd FileType * setlocal formatoptions-=r formatoptions-=o]])
 
-vim.cmd [[autocmd BufRead * autocmd FileType <buffer> ++once if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif]]
+vim.cmd([[autocmd BufRead * autocmd FileType <buffer> ++once if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif]])
