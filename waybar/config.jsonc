@@ -33,12 +33,14 @@
   },
   // Modules configuration
   "hyprland/workspaces": {
-    "all-outputs": true,
-    "format": "{id} {windows}",
+    "all-outputs": false,
+    "format": "{name} {windows}",
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "sort-by": "id",
     "persistent-workspaces": {
-      "*": 5,
+      "eDP-1": ["1", "2", "3", "4", "5"],
+      "*": [6, 7, 8, 9],
     },
     "window-rewrite-default": " ",
     "window-rewrite": {
@@ -56,9 +58,9 @@
       "class<obsidian>": "  ",
     },
     "format-icons": {
-      "urgent": "",
-      "focused": "",
-      "default": "",
+      "urgent": " ",
+      "focused": " ",
+      "default": " ",
     },
   },
   "custom/cliphist": {
