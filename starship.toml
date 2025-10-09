@@ -16,3 +16,17 @@ disabled = false
 
 [time]
 disabled = false
+
+[gcloud]
+symbol = '️🇬️  '
+format = 'on [$symbol$project(\($region\))]($style) '
+
+[gcloud.region_aliases]
+europe-west1 = 'ew1'
+europe-west4 = 'ew4'
+asia-southeast1 = 'as1'
+
+[gcloud.project_aliases]
+a11s-dev = 'dev'
+a11s-live = 'live'
+

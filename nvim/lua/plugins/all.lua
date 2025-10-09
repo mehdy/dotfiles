@@ -28,11 +28,15 @@ return {
 	{ "nvimtools/none-ls.nvim", dependencies = { "nvimtools/none-ls-extras.nvim" } },
 	{ "github/copilot.vim" },
 	{ "puremourning/vimspector" },
+
 	{ "mfussenegger/nvim-dap" },
+	{ "nvim-neotest/nvim-nio" },
 	{
 		"rcarriga/nvim-dap-ui",
 		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
 	},
+	{ "leoluz/nvim-dap-go" },
+
 	{
 		"ThePrimeagen/refactoring.nvim",
 		opts = {},

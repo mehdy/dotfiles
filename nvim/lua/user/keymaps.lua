@@ -57,9 +57,13 @@ keymap("v", "p", '"_dP', opts)
 keymap("v", "<Tab>", ">gv", opts)
 keymap("v", "<S-Tab>", "<gv", opts)
 
+-- Git
+keymap("n", "<leader>ly", ":CopyFileURL<CR>", opts)
+keymap("v", "<leader>ly", ":CopyFileURL<CR>", opts)
+
 -- Extensions
 keymap("n", "<leader>f", "<cmd>Telescope find_files<CR>", opts)
-keymap("n", "<leader>g", "<cmd>Telescope live_grep<CR>", opts)
+keymap("n", "<leader>g", "<cmd>Telescope live_grep_args<CR>", opts)
 keymap("n", "<leader>e", ":NvimTreeFindFile<CR>", opts)
 keymap("n", "<leader>tf", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<leader>tg", ":TagbarToggle<CR>", opts)
@@ -67,7 +71,7 @@ keymap("n", "<leader>tg", ":TagbarToggle<CR>", opts)
 -- LSP
 keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover({border='rounded'})<CR>", opts)
-keymap("n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 
 keymap("n", "lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
@@ -78,3 +82,12 @@ keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 keymap("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 keymap("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 keymap("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+
+-- Debugging
+keymap("n", "<leader>d", "<cmd>lua require('dapui').toggle()<CR>", opts)
+keymap("n", "<leader>b", ":DapToggleBreakpoint<CR>", opts)
+keymap("n", "<leader>1", ":DapContinue<CR>", opts)
+keymap("n", "<leader>2", ":DapStepInto<CR>", opts)
+keymap("n", "<leader>3", ":DapStepOver<CR>", opts)
+keymap("n", "<leader>dc", ":DapClearBreakpoints<CR>", opts)
+keymap("n", "<leader>dx", ":DapTerminate<CR>", opts)
