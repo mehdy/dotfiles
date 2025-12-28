@@ -17,6 +17,7 @@ plugins=(
 	bgnotify
 	brew
 	celery
+	direnv
 	docker
 	docker-compose
 	fzf
