@@ -39,7 +39,6 @@ null_ls.setup({
 		require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
 		diagnostics.golangci_lint,
 		diagnostics.hadolint,
-		diagnostics.ltrs,
 		diagnostics.opentofu_validate,
 		diagnostics.selene,
 		diagnostics.yamllint,

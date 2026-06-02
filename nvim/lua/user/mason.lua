@@ -31,7 +31,6 @@ mason_lspconfig.setup({
 		"jsonls",
 		"lua_ls",
 		"ltex",
-		"prosemd_lsp",
 		"pyright",
 		"ruff",
 		"ts_ls",
