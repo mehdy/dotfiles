@@ -89,7 +89,13 @@ return {
 	{ "moll/vim-bbye" },
 	{ "lukas-reineke/indent-blankline.nvim" },
 	{ "RRethy/vim-illuminate" },
-	{ "preservim/tagbar" },
+	{
+		"stevearc/aerial.nvim",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
 
 	{
 		"mrcjkb/rustaceanvim",

@@ -66,7 +66,7 @@ keymap("n", "<leader>f", "<cmd>Telescope find_files<CR>", opts)
 keymap("n", "<leader>g", "<cmd>Telescope live_grep_args<CR>", opts)
 keymap("n", "<leader>e", ":NvimTreeFindFile<CR>", opts)
 keymap("n", "<leader>tf", ":NvimTreeToggle<CR>", opts)
-keymap("n", "<leader>tg", ":TagbarToggle<CR>", opts)
+keymap("n", "<leader>tg", ":AerialToggle<CR>", opts)
 
 -- LSP
 keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
