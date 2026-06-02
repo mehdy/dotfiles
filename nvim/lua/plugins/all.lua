@@ -27,7 +27,6 @@ return {
 	{ "ray-x/lsp_signature.nvim" },
 	{ "nvimtools/none-ls.nvim", dependencies = { "nvimtools/none-ls-extras.nvim" } },
 	{ "github/copilot.vim" },
-	{ "puremourning/vimspector" },
 
 	{ "mfussenegger/nvim-dap" },
 	{ "nvim-neotest/nvim-nio" },
@@ -54,7 +53,6 @@ return {
 
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", lazy = false, branch = "main" },
 	{ "windwp/nvim-autopairs" },
-	{ "ThePrimeagen/refactoring.nvim" },
 
 	{ "numToStr/Comment.nvim" },
 	{ "JoosepAlviste/nvim-ts-context-commentstring" },
@@ -63,7 +61,15 @@ return {
 	{ "tpope/vim-fugitive" },
 	{ "sindrets/diffview.nvim" },
 
-	{ "fatih/vim-go" },
+	{
+		"ray-x/go.nvim",
+		dependencies = {
+			"ray-x/guihua.lua",
+			"neovim/nvim-lspconfig",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		build = ':lua require("go.install").update_all_sync()',
+	},
 
 	{
 		"kyazdani42/nvim-tree.lua",
