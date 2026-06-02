@@ -1,3 +1,5 @@
+vim.loader.enable()
+
 local options = {
 	autowrite = true,
 	clipboard = "unnamedplus", -- allows neovim to access the system clipboard
@@ -39,4 +41,6 @@ end
 
 vim.cmd([[autocmd FileType * setlocal formatoptions-=r formatoptions-=o]])
 
-vim.cmd([[autocmd BufRead * autocmd FileType <buffer> ++once if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif]])
+vim.cmd(
+	[[autocmd BufRead * autocmd FileType <buffer> ++once if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif]]
+)

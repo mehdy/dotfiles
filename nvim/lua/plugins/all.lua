@@ -81,7 +81,6 @@ return {
 
 	{ "nvim-lualine/lualine.nvim" },
 	{ "moll/vim-bbye" },
-	{ "lewis6991/impatient.nvim" },
 	{ "lukas-reineke/indent-blankline.nvim" },
 	{ "RRethy/vim-illuminate" },
 	{ "preservim/tagbar" },
