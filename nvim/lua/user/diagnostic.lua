@@ -1,13 +1,12 @@
 vim.diagnostic.config({
 	signs = {
-		active = {
-			{ name = "DiagnosticSignError", text = "" },
-			{ name = "DiagnosticSignWarn", text = "" },
-			{ name = "DiagnosticSignHint", text = "✪" },
-			{ name = "DiagnosticSignInfo", text = "" },
+		text = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.HINT] = "✪",
+			[vim.diagnostic.severity.INFO] = "",
 		},
 	},
-	update_in_insert = true,
 	severity_sort = true,
 	float = {
 		border = "rounded",
