@@ -4,48 +4,53 @@ if not status_ok then
 	return
 end
 
-ts.setup({
-	ensure_installed = "all",
-	ignore_install = { "" },
-	highlight = { enable = true },
-	autopairs = { enable = true },
-	indent = { enable = false },
+ts.setup()
+
+ts.install({
+	"bash",
+	"cmake",
+	"comment",
+	"css",
+	"diff",
+	"dockerfile",
+	"go",
+	"gomod",
+	"gosum",
+	"gowork",
+	"hcl",
+	"html",
+	"javascript",
+	"json",
+	"lua",
+	"luadoc",
+	"make",
+	"nginx",
+	"promql",
+	"proto",
+	"python",
+	"regex",
+	"rust",
+	"scss",
+	"sql",
+	"terraform",
+	"tmux",
+	"toml",
+	"tsx",
+	"typescript",
+	"vim",
+	"vimdoc",
+	"yaml",
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = {
-		"go",
-		"proto",
-		"lua",
-		"python",
-		"typescript",
-		"tsx",
-		"tmux",
-		"zsh",
-		"bash",
-		"cmake",
-		"comment",
-		"css",
-		"diff",
-		"dockerfile",
-		"gomod",
-		"gosum",
-		"html",
-		"javascript",
-		"json",
-		"yaml",
-		"make",
-		"nginx",
-		"promql",
-		"rust",
-		"regex",
-		"scss",
-		"sql",
-		"terraform",
-		"toml",
-		"vim",
-	},
-	callback = function()
-		vim.treesitter.start()
+	callback = function(args)
+		local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+		if not lang then
+			return
+		end
+		local ok, added = pcall(vim.treesitter.language.add, lang)
+		if ok and added then
+			vim.treesitter.start(args.buf, lang)
+		end
 	end,
 })
