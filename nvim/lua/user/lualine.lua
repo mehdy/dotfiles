@@ -9,14 +9,20 @@ end
 
 local diff = {
 	"diff",
-	colored = false,
+	colored = true,
 	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-	cond = hide_in_width
+	cond = hide_in_width,
 }
 
 local location = {
 	"location",
 	padding = 0,
+}
+
+local filepath = {
+	"filename",
+	path = 1, -- 0: Just the filename 1: Relative path 2: Absolute path
+	shorting_target = 40, -- Shortens path to leave 40 spaces in the window
 }
 
 lualine.setup({
@@ -28,7 +34,7 @@ lualine.setup({
 	},
 	sections = {
 		lualine_b = { "branch", diff, "diagnostics" },
-		lualine_c = {},
+		lualine_c = { filepath },
 		lualine_z = { location },
 	},
 })

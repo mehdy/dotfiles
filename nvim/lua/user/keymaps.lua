@@ -79,8 +79,8 @@ keymap("n", "la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 keymap("n", "lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
 keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-keymap("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-keymap("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+keymap("n", "gj", "<cmd>lua vim.diagnostic.jump({ count = 1, on_jump = function() vim.diagnostic.open_float() end })<CR>", opts)
+keymap("n", "gk", "<cmd>lua vim.diagnostic.jump({ count = -1, on_jump = function() vim.diagnostic.open_float() end })<CR>", opts)
 keymap("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
 -- Debugging
