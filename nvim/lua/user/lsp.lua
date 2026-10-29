@@ -20,6 +20,22 @@ vim.lsp.config("jsonls", {
 	},
 })
 
+vim.lsp.config("gopls", {
+	cmd = function(dispatchers, config)
+		local env
+		local driver = config.root_dir and config.root_dir .. "/tools/gopls/gopackagesdriver.sh"
+		if driver and vim.uv.fs_stat(driver) then
+			env = { GOPACKAGESDRIVER = driver }
+		end
+		return vim.lsp.rpc.start({ "gopls" }, dispatchers, { cwd = config.cmd_cwd, env = env })
+	end,
+	settings = {
+		gopls = {
+			directoryFilters = { "-bazel-bin", "-bazel-out", "-bazel-testlogs", "-bazel-mono-v2", "-node_modules" },
+		},
+	},
+})
+
 local ok, lsp_signature = pcall(require, "lsp_signature")
 if ok then
 	lsp_signature.setup({ hint_enable = false })

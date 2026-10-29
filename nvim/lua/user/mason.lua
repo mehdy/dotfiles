@@ -33,6 +33,7 @@ mason_lspconfig.setup({
 		"ltex",
 		"pyright",
 		"ruff",
+		"taplo",
 		"ts_ls",
 		"yamlls",
 	},
