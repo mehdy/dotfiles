@@ -1,28 +1,3 @@
-[[keyboard.bindings]]
-chars = "\u001Bj"
-key = "J"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001Bk"
-key = "K"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001Bh"
-key = "H"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001Bl"
-key = "L"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001Bd"
-key = "D"
-mods = "Alt"
-
 [general]
 live_config_reload = true
 
@@ -66,7 +41,47 @@ columns = 100
 lines = 100
 
 [window.padding]
-x = 5
-y = 5
+x = 8
+y = 8
 
-[keyboard]
+# Palette matches Hyprland / waybar / dunst / rofi: dark surface, cyan → green accent
+[colors.primary]
+background = "#151515"
+foreground = "#dcdcdc"
+
+[colors.cursor]
+text = "#151515"
+cursor = "#33ccff"
+
+[colors.selection]
+text = "CellForeground"
+background = "#1f4a5c"
+
+[colors.search.matches]
+foreground = "#151515"
+background = "#ffb454"
+
+[colors.search.focused_match]
+foreground = "#151515"
+background = "#00ff99"
+
+[colors.normal]
+black = "#2a2a2a"
+red = "#f53c3c"
+green = "#3ddc97"
+yellow = "#ffb454"
+blue = "#4d9fff"
+magenta = "#c678dd"
+cyan = "#33ccff"
+white = "#b8b8b8"
+
+[colors.bright]
+black = "#6a6a6a"
+red = "#ff6b6b"
+green = "#00ff99"
+yellow = "#ffcc80"
+blue = "#7ab8ff"
+magenta = "#d9a0ee"
+cyan = "#7ae0ff"
+white = "#f0f0f0"
+
