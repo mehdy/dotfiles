@@ -24,7 +24,7 @@ hl.window_rule({
 
 hl.window_rule({ match = { class = "spotify" },              workspace = "5 silent" })
 hl.window_rule({ match = { class = "org.telegram.desktop" }, workspace = "5 silent" })
-hl.window_rule({ match = { class = "Slack" },                workspace = "4 silent" })
+hl.window_rule({ match = { class = "slack" },                workspace = "4 silent" })
 
 hl.workspace_rule({ workspace = "1", default = true, monitor = "eDP-1" })
 hl.workspace_rule({ workspace = "2", monitor = "eDP-1" })
