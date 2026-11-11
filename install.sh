@@ -5,11 +5,14 @@ ln -sf $PWD/{.alacritty.toml,.vimrc,.zshrc,.extra.zsh,.tmux.conf,.gitconfig} ~/
 ln -sf $PWD/{nvim,starship.toml} ~/.config/
 
 if [[ `uname` == "Linux" ]]; then
-	ln -sf $PWD/{hypr,uwsm,waybar,dunst} ~/.config/
+	ln -sf $PWD/{hypr,uwsm,waybar,dunst,swayosd} ~/.config/
 	ln -sf $PWD/calendar_notificaiton_killer.zsh ~/.local/bin/
 
 	# Session services, started with graphical-session.target under uwsm
-	systemctl --user enable hypridle hyprpaper waybar hyprpolkitagent cliphist gcr-ssh-agent.socket
+	mkdir -p ~/.config/systemd/user
+	ln -sf $PWD/systemd/swayosd.service ~/.config/systemd/user/
+	systemctl --user daemon-reload
+	systemctl --user enable hypridle hyprpaper waybar hyprpolkitagent cliphist gcr-ssh-agent.socket swayosd
 
 	# Dark theme (persisted by dconf, so only needs setting once)
 	gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Dark"   # GTK3

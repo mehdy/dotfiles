@@ -118,12 +118,16 @@ hl.bind(mainMod .. " + SHIFT + 0", zoomReset)
 -- Laptop multimedia keys for volume and LCD brightness
 local mediaFlags = { repeating = true, locked = true }
 
-hl.bind("XF86AudioRaiseVolume",  hl.dsp.exec_cmd("~/.config/hypr/scripts/volume-up.sh"),         mediaFlags)
-hl.bind("XF86AudioLowerVolume",  hl.dsp.exec_cmd("~/.config/hypr/scripts/volume-down.sh"),       mediaFlags)
-hl.bind("XF86AudioMute",         hl.dsp.exec_cmd("~/.config/hypr/scripts/volume-mute.sh"),       mediaFlags)
-hl.bind("XF86AudioMicMute",      hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), mediaFlags)
-hl.bind("XF86MonBrightnessUp",   hl.dsp.exec_cmd("~/.config/hypr/scripts/brightness-up.sh"),     mediaFlags)
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("~/.config/hypr/scripts/brightness-down.sh"),   mediaFlags)
+-- swayosd-client changes the level and shows the OSD (server runs as a user service)
+local osd   = "swayosd-client "
+local click = "; canberra-gtk-play -i audio-volume-change -d changeVolume"
+
+hl.bind("XF86AudioRaiseVolume",  hl.dsp.exec_cmd(osd .. "--output-volume raise --max-volume 100" .. click), mediaFlags)
+hl.bind("XF86AudioLowerVolume",  hl.dsp.exec_cmd(osd .. "--output-volume lower" .. click),                  mediaFlags)
+hl.bind("XF86AudioMute",         hl.dsp.exec_cmd(osd .. "--output-volume mute-toggle" .. click),            mediaFlags)
+hl.bind("XF86AudioMicMute",      hl.dsp.exec_cmd(osd .. "--input-volume mute-toggle"),                      mediaFlags)
+hl.bind("XF86MonBrightnessUp",   hl.dsp.exec_cmd(osd .. "--brightness raise"),                              mediaFlags)
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(osd .. "--brightness lower"),                              mediaFlags)
 
 hl.bind("XF86Favorites",  hl.dsp.exec_cmd("playerctl -p 'spotify,*' play-pause"), { locked = true })
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl -p 'spotify,*' play-pause"), { locked = true })

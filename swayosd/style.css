@@ -1,0 +1,60 @@
+/* SwayOSD theme matching Hyprland: dark surface, cyan → green accent
+   (same colors as general.col.active_border in hypr/look-and-feel.lua) */
+
+@define-color osd_bg     rgba(21, 21, 21, 0.85);
+@define-color osd_fg     rgb(220, 220, 220);
+@define-color accent_a   rgb(51, 204, 255);   /* #33ccff */
+@define-color accent_b   rgb(0, 255, 153);    /* #00ff99 */
+
+window#osd {
+  border-radius: 999px;
+  border: 1px solid alpha(@accent_a, 0.6);
+  background: @osd_bg;
+}
+
+window#osd #container {
+  margin: 14px 18px;
+}
+
+window#osd image,
+window#osd label {
+  color: @osd_fg;
+  font-family: "Hack Nerd Font", monospace;
+}
+
+window#osd progressbar:disabled,
+window#osd image:disabled {
+  opacity: 0.4;
+}
+
+window#osd progressbar,
+window#osd segmentedprogress {
+  min-height: 6px;
+  border-radius: 999px;
+  background: transparent;
+  border: none;
+}
+
+window#osd trough,
+window#osd segment {
+  min-height: inherit;
+  border-radius: inherit;
+  border: none;
+  background: alpha(@osd_fg, 0.15);
+}
+
+window#osd progress,
+window#osd segment.active {
+  min-height: inherit;
+  border-radius: inherit;
+  border: none;
+  background-image: linear-gradient(to right, @accent_a, @accent_b);
+}
+
+window#osd segment {
+  margin-left: 8px;
+}
+
+window#osd segment:first-child {
+  margin-left: 0;
+}
