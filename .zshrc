@@ -57,26 +57,11 @@ fi
 
 
 # User configuration
-# Track last sourced .extra.zsh to avoid duplicate sourcing
-_last_sourced_extra=""
-
-function source_extra_zshrc_if_exists() {
-    local extra_rc="${1:-$PWD}/.extra.zsh"
-    if [[ -f "$extra_rc" && "$extra_rc" != "$_last_sourced_extra" ]]; then
-        source "$extra_rc"
-        _last_sourced_extra="$extra_rc"
-    fi
-}
-
-# Hook: when changing directories
-function chpwd() {
-  source_extra_zshrc_if_exists
-}
 
 FPATH="/home/linuxbrew/.linuxbrew/share/zsh/site-functions:${FPATH}"
 
 export LANG=en_US.UTF-8
-export TERM=tmux-256color
+# Don't set TERM here: the terminal sets it, and tmux sets its own inside panes.
 
 export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_AUTOCONNECT=false
@@ -114,6 +99,5 @@ alias lT='exa -T --git-ignore --level=4 --group-directories-first'
 
 eval "$(starship init zsh)"
 
-# Also run it once when the shell starts
-source_extra_zshrc_if_exists $HOME
-source_extra_zshrc_if_exists
+# Machine-local settings, not tracked in the dotfiles repo
+[[ -f "$HOME/.extra.zsh" ]] && source "$HOME/.extra.zsh"
