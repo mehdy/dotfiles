@@ -84,7 +84,7 @@ button:hover {
 #network,
 #pulseaudio,
 #wireplumber,
-#custom-media,
+#mpris,
 #tray,
 #mode,
 #idle_inhibitor,
@@ -184,18 +184,14 @@ label:focus {
     background-color: #f53c3c;
 }
 
-#custom-media {
+#mpris {
     background-color: #66cc99;
     color: #2a5c45;
     min-width: 100px;
 }
 
-#custom-media.custom-spotify {
-    background-color: #66cc99;
-}
-
-#custom-media.custom-vlc {
-    background-color: #ffa000;
+#mpris.paused {
+    background-color: #51a37a;
 }
 
 #temperature.critical {
