@@ -5,7 +5,7 @@ ln -sf $PWD/{.alacritty.toml,.vimrc,.zshrc,.extra.zsh,.tmux.conf,.gitconfig} ~/
 ln -sf $PWD/{nvim,starship.toml} ~/.config/
 
 if [[ `uname` == "Linux" ]]; then
-	ln -sf $PWD/{hypr,uwsm,waybar,dunst,swayosd} ~/.config/
+	ln -sf $PWD/{hypr,uwsm,waybar,dunst,swayosd,rofi} ~/.config/
 
 	# Session services, started with graphical-session.target under uwsm
 	mkdir -p ~/.config/systemd/user
@@ -16,6 +16,8 @@ if [[ `uname` == "Linux" ]]; then
 	# Dark theme (persisted by dconf, so only needs setting once)
 	gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Dark"   # GTK3
 	gsettings set org.gnome.desktop.interface color-scheme "prefer-dark" # GTK4
+	gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
+	gsettings set org.gnome.desktop.interface cursor-size 24
 fi
 
 if [[ ! -d ~/.tmux/plugins/tpm ]]; then

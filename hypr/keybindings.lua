@@ -61,6 +61,9 @@ hl.bind(mainMod .. " + SHIFT + C", hl.dsp.window.center())
 hl.bind(mainMod .. " + CTRL + F",  hl.dsp.window.float())
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen())
 
+-- Lock (through hypridle's lock_cmd, so no grace period)
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"))
+
 -- Notifications (dunst)
 hl.bind(mainMod .. " + N",          hl.dsp.exec_cmd("dunstctl close"))
 hl.bind(mainMod .. " + SHIFT + N",  hl.dsp.exec_cmd("dunstctl set-paused toggle; pkill -RTMIN+9 waybar")) -- Do Not Disturb

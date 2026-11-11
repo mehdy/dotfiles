@@ -6,8 +6,9 @@ local app = "uwsm app -- "
 
 local chrome  = app .. "google-chrome-stable"
 local firefox = app .. "firefox"
--- -show needs to be added; -run-command makes apps launched from rofi go through uwsm too
-local menu    = "rofi -theme $ROFI_THEME_DIR/$ROFI_THEME_STYLE.rasi -run-command '" .. app .. "{cmd}'"
+-- -show needs to be added; -run-command makes apps launched from rofi go through uwsm too.
+-- The theme comes from ~/.config/rofi/config.rasi.
+local menu    = "rofi -run-command '" .. app .. "{cmd}'"
 
 return {
     app         = app,
