@@ -17,6 +17,7 @@ hl.bind(mainMod .. " + CTRL + C", hl.dsp.exec_cmd(p.menu .. " -show calc"))
 hl.bind(mainMod .. " + X", hl.dsp.window.close())
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())           -- dwindle
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))     -- dwindle
+hl.bind(mainMod .. " + Tab", hl.dsp.exec_cmd(p.menu .. " -show window")) -- searchable window switcher
 hl.bind("ALT + Tab", function()
     hl.dispatch(hl.dsp.window.cycle_next({ next = false }))
     hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
