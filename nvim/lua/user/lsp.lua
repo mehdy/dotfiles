@@ -29,9 +29,17 @@ vim.lsp.config("gopls", {
 		end
 		return vim.lsp.rpc.start({ "gopls" }, dispatchers, { cwd = config.cmd_cwd, env = env })
 	end,
+	-- Neovim doesn't watch files for LSP servers on Linux by default; gopls needs it to
+	-- reload when BUILD.bazel/MODULE.bazel change (workspaceFiles). Requires inotifywait.
+	capabilities = {
+		workspace = {
+			didChangeWatchedFiles = { dynamicRegistration = true },
+		},
+	},
 	settings = {
 		gopls = {
 			directoryFilters = { "-bazel-bin", "-bazel-out", "-bazel-testlogs", "-bazel-mono-v2", "-node_modules" },
+			workspaceFiles = { "**/BUILD.bazel", "**/MODULE.bazel" },
 		},
 	},
 })

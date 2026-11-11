@@ -14,6 +14,7 @@ export SAVEHIST=$HISTSIZE
 
 plugins=(
 	archlinux
+	bazel
 	bgnotify
 	brew
 	celery
