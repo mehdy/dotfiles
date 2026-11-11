@@ -1,26 +1,57 @@
 #!/bin/zsh
+# Link the dotfiles into place. Safe to re-run from anywhere: correct links are
+# left alone, and anything else in the way is moved to <name>.bak.<timestamp>.
+# Packages: sudo pacman -S --needed - < packages.txt
 
-ln -sf $PWD/root.gitignore ~/.gitignore
-ln -sf $PWD/{.alacritty.toml,.zshrc,.tmux.conf,.gitconfig} ~/
-ln -sf $PWD/{nvim,starship.toml} ~/.config/
+DOTFILES=${0:A:h}
 
-if [[ `uname` == "Linux" ]]; then
-	ln -sf $PWD/{hypr,uwsm,waybar,dunst,swayosd,rofi} ~/.config/
+# <path in repo>  <destination, relative to $HOME>
+links=(
+	root.gitignore  .gitignore
+	.alacritty.toml .alacritty.toml
+	.zshrc          .zshrc
+	.tmux.conf      .tmux.conf
+	.gitconfig      .gitconfig
+	nvim            .config/nvim
+	starship.toml   .config/starship.toml
+	hypr            .config/hypr
+	uwsm            .config/uwsm
+	waybar          .config/waybar
+	dunst           .config/dunst
+	swayosd         .config/swayosd
+	rofi            .config/rofi
+)
 
-	# Session services, started with graphical-session.target under uwsm
-	mkdir -p ~/.config/systemd/user
-	ln -sf $PWD/systemd/swayosd.service ~/.config/systemd/user/
-	systemctl --user daemon-reload
-	systemctl --user enable hypridle hyprpaper waybar hyprpolkitagent cliphist gcr-ssh-agent.socket swayosd
+for src dst in $links; do
+	src=$DOTFILES/$src dst=$HOME/$dst
+	[[ -L $dst && $(readlink $dst) == $src ]] && continue
+	if [[ -L $dst ]]; then
+		rm $dst
+	elif [[ -e $dst ]]; then
+		mv $dst $dst.bak.$(date +%Y%m%d%H%M%S) && echo "moved existing $dst to $dst.bak.*"
+	fi
+	mkdir -p ${dst:h}
+	ln -s $src $dst && echo "linked $dst"
+done
 
-	# Dark theme (persisted by dconf, so only needs setting once)
-	gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Dark"   # GTK3
-	gsettings set org.gnome.desktop.interface color-scheme "prefer-dark" # GTK4
-	gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
-	gsettings set org.gnome.desktop.interface cursor-size 24
+missing=(${(f)"$(pacman -T ${=$(<$DOTFILES/packages.txt)})"})
+if (( $#missing )); then
+	echo "\nMissing packages — install them, then re-run this script:"
+	echo "  sudo pacman -S --needed $missing\n"
 fi
 
+# Session services, started with graphical-session.target under uwsm
+systemctl --user enable $DOTFILES/systemd/swayosd.service
+systemctl --user enable hypridle hyprpaper waybar hyprpolkitagent cliphist gcr-ssh-agent.socket
+
+# Dark theme (persisted by dconf)
+gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Dark"   # GTK3
+gsettings set org.gnome.desktop.interface color-scheme "prefer-dark" # GTK4
+
+# .zshrc expects oh-my-zsh (it installs its own plugins on first start)
+[[ -d ~/.oh-my-zsh ]] || git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+
 if [[ ! -d ~/.tmux/plugins/tpm ]]; then
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 	~/.tmux/plugins/tpm/bin/install_plugins
 fi
