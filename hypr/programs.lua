@@ -13,6 +13,6 @@ return {
     fileManager = "nautilus",
     menu        = menu,
     clipboard   = menu
-        .. " -modi clipboard:/usr/bin/cliphist-rofi-img -show clipboard -show icons"
-        .. " -display-columns 2 -calc-command 'wl-copy {result}'",
+        .. " -modi clipboard:/usr/bin/cliphist-rofi-img -show clipboard -show-icons"
+        .. " -display-columns 2",
 }

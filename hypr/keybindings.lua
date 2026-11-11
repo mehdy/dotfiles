@@ -66,7 +66,7 @@ hl.bind("SHIFT + Print", hl.dsp.exec_cmd(
 ))
 -- screenshot of the whole screen
 hl.bind("Print", hl.dsp.exec_cmd(
-    [[grim - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png | dunstify  -i ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png "Screenshot of whole screen taken" -t 1000]]
+    [[FILE=~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png; grim - | tee >(wl-copy) > "$FILE" && dunstify -i "$FILE" "Screenshot of whole screen taken" -t 1000]]
 ))
 
 -- Switch workspaces with mainMod + [1-5] / [qwer]
