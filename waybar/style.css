@@ -76,6 +76,7 @@ button:hover {
 /* ---------- Pills ---------- */
 
 #custom-minimized,
+#custom-dunst,
 #window,
 #mpris,
 #clock,
@@ -121,6 +122,15 @@ button:hover {
 
 #clock {
     font-weight: bold;
+}
+
+#custom-dunst {
+    color: @dim;
+}
+
+#custom-dunst.paused {
+    color: @bg;
+    background: @warn;
 }
 
 #idle_inhibitor.activated {

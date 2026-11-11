@@ -20,6 +20,7 @@
 		// "mpd",
 		"privacy",
 		"tray",
+		"custom/dunst",
 		"idle_inhibitor",
 		"hyprland/language",
 		"network",
@@ -46,6 +47,15 @@
 		"exec": "$HOME/.config/waybar/scripts/minimized.py",
 		"return-type": "json",
 		"on-click": "hyprctl dispatch 'hl.dsp.workspace.toggle_special(\"magic\")'",
+	},
+	// Do Not Disturb: click toggles, right-click brings back the last notification
+	"custom/dunst": {
+		"exec": "$HOME/.config/waybar/scripts/dunst.sh",
+		"return-type": "json",
+		"interval": 5,
+		"signal": 9,
+		"on-click": "dunstctl set-paused toggle; pkill -RTMIN+9 waybar",
+		"on-click-right": "dunstctl history-pop",
 	},
 	// Lights up while the screen is shared or the mic is in use
 	"privacy": {

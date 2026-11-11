@@ -61,6 +61,12 @@ hl.bind(mainMod .. " + SHIFT + C", hl.dsp.window.center())
 hl.bind(mainMod .. " + CTRL + F",  hl.dsp.window.float())
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen())
 
+-- Notifications (dunst)
+hl.bind(mainMod .. " + N",          hl.dsp.exec_cmd("dunstctl close"))
+hl.bind(mainMod .. " + SHIFT + N",  hl.dsp.exec_cmd("dunstctl set-paused toggle; pkill -RTMIN+9 waybar")) -- Do Not Disturb
+hl.bind(mainMod .. " + CTRL + N",   hl.dsp.exec_cmd("dunstctl history-pop"))
+hl.bind(mainMod .. " + ALT + N",    hl.dsp.exec_cmd("dunstctl context"))
+
 -- Screenshot
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd(
     [[FILE=~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png; grim -g "$(slurp)" - | tee >(wl-copy) | { cat > "$FILE" && [ -s "$FILE" ] && dunstify -i "$FILE" "Screenshot of the region taken" -t 1000 || rm -f "$FILE"; }]]
