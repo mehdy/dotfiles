@@ -79,7 +79,9 @@
 	// Modules configuration
 	"hyprland/workspaces": {
 		"all-outputs": false,
-		"format": "{name} {windows}",
+		// small raised number + app icons; empty workspaces show just the (dimmed) number
+		"format": "<span size='small' rise='3pt'>{name} </span>{windows}",
+		"format-window-separator": "", // rewrite icons already end with a space
 		"on-click": "activate",
 		"sort-by": "id",
 		"persistent-workspaces": {
@@ -263,13 +265,13 @@
 			"󰤥 ",
 			"󰤨 "
 		],
-		"format-wifi": "{icon}   {bandwidthDownBits:>9}   {bandwidthUpBits:>9}",
+		"format-wifi": "{icon}", // click to toggle the speeds (format-alt); hover for details
 		"tooltip-format-wifi": "{icon} {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
 		"format-ethernet": "󰀂  {ipaddr}/{cidr}",
 		"tooltip-format": "󰀂  {ifname} via {gwaddr}",
 		"format-linked": "󰀂  {ifname} (No IP)",
 		"format-disconnected": "󰖪 ",
-		"format-alt": "{ifname}: {ipaddr}/{cidr}",
+		"format-alt": "{icon}   {bandwidthDownBits:>9}   {bandwidthUpBits:>9}",
 		"interval": 1,
 	},
 	"pulseaudio": {
