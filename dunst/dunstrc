@@ -27,7 +27,8 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = none
+    # On Wayland, mouse/keyboard both mean "the output last interacted with".
+    follow = mouse
 
     ### Geometry ###
 
@@ -71,7 +72,7 @@
     progress_bar_max_width = 300
 
     # Corner radius for the progress bar. 0 disables rounded corners.
-    progress_bar_corner_radius = 10
+    progress_bar_corner_radius = 5 # max is half of progress_bar_height
 
     # Corner radius for the icon image.
     icon_corner_radius = 0
@@ -81,9 +82,7 @@
     indicate_hidden = yes
 
     # The transparency of the window.  Range: [0; 100].
-    # This option will only work if a compositing window manager is
-    # present (e.g. xcompmgr, compiz, etc.). (X11 only)
-    transparency = 40
+    # (transparency is X11-only; on Wayland use the alpha in the urgency colors)
 
     # Draw a line of "separator_height" pixel height between two
     # notifications.
@@ -226,8 +225,7 @@
     # Scale larger icons down to this size, set to 0 to disable
     max_icon_size = 128
 
-    # Paths to default icons (only neccesary when not using recursive icon lookup)
-    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    # (icon_path not needed: enable_recursive_icon_lookup + icon_theme find icons)
 
     ### History ###
 
@@ -241,7 +239,7 @@
     ### Misc/Advanced ###
 
     # dmenu path.
-    dmenu = /usr/bin/rofi -dmenu -p dunst:
+    dmenu = ~/.config/dunst/rofi-menu.sh
 
     # Browser for opening urls in context menu.
     browser = /usr/bin/xdg-open
@@ -340,7 +338,7 @@
     background = "#900000CC"
     foreground = "#ffffff"
     frame_color = "#ffffff"
-    timeout = 6
+    timeout = 0 # stay until dismissed
     # Icon for notifications with critical urgency, uncomment to enable
     #default_icon = /path/to/icon
 
@@ -462,13 +460,10 @@
 #    summary = *twitter.com*
 #    urgency = normal
 #
-[stack-settings]
-   stack_tag = "settings"
-   icon_position = "top"
-   hide_text = true
-   fullscreen = show
-   history_ignore = true
-   highlight = "#E8E8E8"
+# Google Calendar (Chrome) reminders never expire on their own; close them after 10s
+[google-calendar]
+    body = "*calendar.google.com*"
+    override_dbus_timeout = 10
 
 #
 # vim: ft=cfg

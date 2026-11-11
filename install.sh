@@ -6,7 +6,6 @@ ln -sf $PWD/{nvim,starship.toml} ~/.config/
 
 if [[ `uname` == "Linux" ]]; then
 	ln -sf $PWD/{hypr,uwsm,waybar,dunst,swayosd} ~/.config/
-	ln -sf $PWD/calendar_notificaiton_killer.zsh ~/.local/bin/
 
 	# Session services, started with graphical-session.target under uwsm
 	mkdir -p ~/.config/systemd/user
