@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="" # prompt comes from starship
 export KEEP_ZSHRC=yes
 zstyle ':omz:update' mode reminder
 zstyle ':omz:update' frequency 7
@@ -16,8 +17,6 @@ plugins=(
 	archlinux
 	bazel
 	bgnotify
-	brew
-	celery
 	direnv
 	docker
 	docker-compose
@@ -28,7 +27,6 @@ plugins=(
 	golang
 	gpg-agent
 	kubectl
-	minikube
 	npm
 	pip
 	python
@@ -58,8 +56,6 @@ fi
 
 # User configuration
 
-FPATH="/home/linuxbrew/.linuxbrew/share/zsh/site-functions:${FPATH}"
-
 export LANG=en_US.UTF-8
 # Don't set TERM here: the terminal sets it, and tmux sets its own inside panes.
 
@@ -70,13 +66,10 @@ export EDITOR='nvim'
 export GOPATH="$HOME/projects/go"
 export GOBIN="$GOPATH/bin"
 
-export ANDROID_HOME="$HOME/Android/Sdk"
-
 source "$HOME/.cargo/env"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.docker/bin:$PATH"
 export PATH="$GOBIN:$PATH"
 
 export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --exclude .git --color=always"
@@ -90,12 +83,12 @@ alias watch='watch '
 alias sudo='sudo '
 alias n="nvim"
 alias gg="gitui"
-alias ls='exa'
-alias l='exa -l --all --group-directories-first --git'
-alias ll='exa -l --all --all --group-directories-first --git'
-alias lt='exa -T --git-ignore --level=2 --group-directories-first'
-alias llt='exa -lT --git-ignore --level=2 --group-directories-first'
-alias lT='exa -T --git-ignore --level=4 --group-directories-first'
+alias ls='eza'
+alias l='eza -l --all --group-directories-first --git'
+alias ll='eza -l --all --all --group-directories-first --git'
+alias lt='eza -T --git-ignore --level=2 --group-directories-first'
+alias llt='eza -lT --git-ignore --level=2 --group-directories-first'
+alias lT='eza -T --git-ignore --level=4 --group-directories-first'
 
 eval "$(starship init zsh)"
 
