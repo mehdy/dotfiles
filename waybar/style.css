@@ -1,201 +1,206 @@
+/* Waybar theme matching Hyprland, SwayOSD and hyprlock:
+   dark surface, cyan → green accent (general.col.active_border in hypr/look-and-feel.lua) */
+
+@define-color bg        rgba(21, 21, 21, 0.85);
+@define-color surface   rgba(255, 255, 255, 0.06);
+@define-color fg        #dcdcdc;
+@define-color dim       #8a8a8a;
+@define-color accent_a  #33ccff;
+@define-color accent_b  #00ff99;
+@define-color warn      #ffb454;
+@define-color crit      #f53c3c;
+
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    /* proportional text; icons fall back to the Nerd Font */
+    font-family: "Noto Sans", "Hack Nerd Font Propo", "Font Awesome 7 Free", sans-serif;
+    font-size: 13px;
+    min-height: 0;
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-    color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
+    background: @bg;
+    border-bottom: 1px solid alpha(@accent_a, 0.35);
+    color: @fg;
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
+tooltip {
+    background: @bg;
+    border: 1px solid alpha(@accent_a, 0.6);
+    border-radius: 8px;
 }
 
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
+tooltip label {
+    color: @fg;
 }
 
 button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
     border: none;
     border-radius: 0;
+    box-shadow: none;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
     background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
 }
 
-/* you can set a style on hover for any module like this */
+/* ---------- Workspaces ---------- */
+
+#workspaces {
+    margin: 0 4px 0 0;
+}
 
 #workspaces button {
     padding: 0 5px;
-    background-color: transparent;
-    color: #ffffff;
+    color: @dim;
+    background: transparent;
+    box-shadow: inset 0 -2px transparent;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+    color: @fg;
+    background: @surface;
 }
 
 #workspaces button.active {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+    color: @fg;
+    background-image: linear-gradient(to right, alpha(@accent_a, 0.18), alpha(@accent_b, 0.18));
+    box-shadow: inset 0 -2px @accent_a;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    color: @bg;
+    background: @crit;
 }
 
-#mode {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
-}
+/* ---------- Pills ---------- */
 
+#custom-minimized,
+#window,
+#mpris,
 #clock,
-#battery,
+#privacy,
+#tray,
+#idle_inhibitor,
+#language,
+#network,
 #cpu,
 #memory,
-#disk,
 #temperature,
-#backlight,
-#network,
 #pulseaudio,
-#wireplumber,
-#mpris,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#power-profiles-daemon,
-#language,
-#mpd {
-	margin: 3px 0 5px 0;
-	border-radius: 50px;
-    padding: 0 5px;
-    color: #ffffff;
+#battery,
+#custom-power {
+    margin: 4px 0;
+    padding: 0 8px;
+    border-radius: 999px;
+    color: @fg;
+    background: @surface;
 }
 
-#window,
-#workspaces {
-    margin: 0 4px;
+/* Title is plain text: it expands to fill the left side, so no pill */
+#window {
+    background: transparent;
+    color: @dim;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+#custom-minimized {
+    color: @accent_a;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
+#mpris {
+    color: @bg;
+    background-image: linear-gradient(to right, @accent_a, @accent_b);
 }
 
-#battery.charging, #battery.plugged {
-    color: #ffffff;
-    /* background-color: rgba(30, 200, 60, 0.3); */
+#mpris.paused,
+#mpris.stopped {
+    color: @fg;
+    background-image: none;
+    background: @surface;
+}
+
+#clock {
+    font-weight: bold;
+}
+
+#idle_inhibitor.activated {
+    color: @bg;
+    background: @accent_b;
+}
+
+#language {
+    min-width: 24px;
+}
+
+#custom-power {
+    color: @crit;
+    margin-right: 6px;
+}
+
+/* ---------- States ---------- */
+
+#privacy {
+    padding: 0;
+    background: transparent;
+}
+
+#privacy-item {
+    padding: 0 8px;
+    border-radius: 999px;
+    color: @bg;
+}
+
+#privacy-item.screenshare {
+    background: @crit;
+}
+
+#privacy-item.audio-in {
+    background: @warn;
+}
+
+#pulseaudio.muted {
+    color: @dim;
+}
+
+/* monospace + padded speeds (:>9 in config) keep the pill a constant width */
+#network {
+    font-family: "Hack Nerd Font";
+}
+
+#network.disconnected {
+    color: @crit;
+}
+
+#temperature.critical {
+    color: @bg;
+    background: @crit;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: @accent_b;
+}
+
+#battery.warning:not(.charging) {
+    color: @warn;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        background: @fg;
+        color: @bg;
     }
 }
 
-/* Using steps() instead of linear as a timing function to limit cpu usage */
+/* steps() instead of linear keeps CPU usage down */
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
+    color: @fg;
+    background: @crit;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
-}
-
-#power-profiles-daemon {
-    padding-right: 15px;
-}
-
-#power-profiles-daemon.performance {
-    background-color: #f53c3c;
-    color: #ffffff;
-}
-
-#power-profiles-daemon.balanced {
-    background-color: #2980b9;
-    color: #ffffff;
-}
-
-#power-profiles-daemon.power-saver {
-    background-color: #2ecc71;
-    color: #000000;
-}
-
-label:focus {
-    background-color: #000000;
-}
-
-#disk {
-    background-color: #964B00;
-}
-
-#network {
-	font-family: Hack Nerd Font;
-}
-
-#network.disconnected {
-    background-color: #f53c3c;
-}
-
-#pulseaudio.muted {
-    color: #dfdfdf;
-}
-
-#wireplumber {
-    background-color: #fff0f5;
-    color: #000000;
-}
-
-#wireplumber.muted {
-    background-color: #f53c3c;
-}
-
-#mpris {
-    background-color: #66cc99;
-    color: #2a5c45;
-    min-width: 100px;
-}
-
-#mpris.paused {
-    background-color: #51a37a;
-}
-
-#temperature.critical {
-    background-color: #eb4d4b;
 }
 
 #tray > .passive {
@@ -204,80 +209,5 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    background: @crit;
 }
-
-#idle_inhibitor {
-    background-color: #2d3436;
-}
-
-#idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
-}
-
-#mpd {
-    background-color: #66cc99;
-    color: #2a5c45;
-}
-
-#mpd.disconnected {
-    background-color: #f53c3c;
-}
-
-#mpd.stopped {
-    background-color: #90b1b1;
-}
-
-#mpd.paused {
-    background-color: #51a37a;
-}
-
-#language {
-}
-
-#keyboard-state {
-    background: #97e1ad;
-    color: #000000;
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state > label {
-    padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad.empty {
-	background-color: transparent;
-}
-
-#privacy {
-    padding: 0;
-}
-
-#privacy-item {
-    padding: 0 5px;
-    color: white;
-}
-
-#privacy-item.screenshare {
-    background-color: #cf5700;
-}
-
-#privacy-item.audio-in {
-    background-color: #1ca000;
-}
-
-#privacy-item.audio-out {
-    background-color: #0069d4;
-}
-

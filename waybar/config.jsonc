@@ -7,28 +7,64 @@
 	// Choose the order of the modules
 	"modules-left": [
 		"hyprland/workspaces",
-		"hyprland/window",
+		"custom/minimized",
 		"mpris",
+		"hyprland/window", // expands to fill the gap, so the stats sit right next to the clock
+		"cpu",
+		"memory",
 	],
 	"modules-center": [
 		"clock"
 	],
 	"modules-right": [
 		// "mpd",
+		"privacy",
 		"tray",
+		"idle_inhibitor",
 		"hyprland/language",
 		"network",
 		// "power-profiles-daemon",
-		"cpu",
-		"memory",
 		"temperature",
 		// "backlight",
 		"pulseaudio",
 		"battery",
 		"custom/power",
 	],
+	"hyprland/window": {
+		"max-length": 40,
+		"expand": true,
+	},
 	"hyprland/language": {
-		"format": "{short}",
+		"format": "{}", // filled from format-<lang> below
+		"format-sv": "EN", // keys are xkb short descriptions: se → sv, ir → fa
+		"format-fa": "FA",
+		"tooltip-format": "{long}",
+		"on-click": "hyprctl switchxkblayout all next",
+	},
+	// Windows minimized to special:magic (SUPER+M); click to show them
+	"custom/minimized": {
+		"exec": "$HOME/.config/waybar/scripts/minimized.py",
+		"return-type": "json",
+		"on-click": "hyprctl dispatch 'hl.dsp.workspace.toggle_special(\"magic\")'",
+	},
+	// Lights up while the screen is shared or the mic is in use
+	"privacy": {
+		"icon-size": 14,
+		"icon-spacing": 6,
+		"modules": [
+			{ "type": "screenshare", "tooltip": true, "tooltip-icon-size": 24 },
+			{ "type": "audio-in", "tooltip": true, "tooltip-icon-size": 24 },
+		],
+	},
+	// Keep the screen awake (hypridle honours the inhibitor)
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": " ",
+			"deactivated": " ",
+		},
+		"tooltip-format-activated": "Staying awake",
+		"tooltip-format-deactivated": "Idle as usual",
 	},
 	// Modules configuration
 	"hyprland/workspaces": {
@@ -217,7 +253,7 @@
 			"󰤥 ",
 			"󰤨 "
 		],
-		"format-wifi": "{icon}   {bandwidthDownBits:>}   {bandwidthUpBits:>}",
+		"format-wifi": "{icon}   {bandwidthDownBits:>9}   {bandwidthUpBits:>9}",
 		"tooltip-format-wifi": "{icon} {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
 		"format-ethernet": "󰀂  {ipaddr}/{cidr}",
 		"tooltip-format": "󰀂  {ifname} via {gwaddr}",
@@ -248,12 +284,16 @@
 			],
 		},
 		"on-click": "pavucontrol",
+		"on-click-right": "swayosd-client --output-volume mute-toggle",
+		"on-scroll-up": "swayosd-client --output-volume raise --max-volume 100",
+		"on-scroll-down": "swayosd-client --output-volume lower",
+		"smooth-scrolling-threshold": 1,
 	},
 	"mpris": {
 		"format": "{player_icon} {dynamic}",
 		"format-paused": "{status_icon} {dynamic}",
 		"dynamic-order": ["artist", "title"],
-		"dynamic-len": 60,
+		"dynamic-len": 30,
 		"player-icons": {
 			"spotify": " ",
 			"kdeconnect": " ",
