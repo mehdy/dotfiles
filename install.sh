@@ -10,6 +10,10 @@ if [[ `uname` == "Linux" ]]; then
 
 	# Session services, started with graphical-session.target under uwsm
 	systemctl --user enable hypridle hyprpaper waybar hyprpolkitagent cliphist gcr-ssh-agent.socket
+
+	# Dark theme (persisted by dconf, so only needs setting once)
+	gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Dark"   # GTK3
+	gsettings set org.gnome.desktop.interface color-scheme "prefer-dark" # GTK4
 fi
 
 if [[ ! -d ~/.tmux/plugins/tpm ]]; then

@@ -5,7 +5,7 @@
 -- stop the others from loading.
 
 require("monitor")
--- programs.lua is not required here: keybindings.lua pulls it in for its return value
+-- programs.lua is not required here: autostart.lua and keybindings.lua pull it in for its return value
 require("autostart")
 require("look-and-feel")
 require("input")

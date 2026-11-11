@@ -1,16 +1,21 @@
 -- Programs used across the config.
 -- Required by keybindings.lua; returns a table since each require() is its own Lua scope.
 
-local chrome  = "google-chrome-stable"
-local firefox = "firefox"
-local menu    = "rofi -theme $ROFI_THEME_DIR/$ROFI_THEME_STYLE.rasi" -- -show needs to be added
+-- Launch apps in their own systemd scope under uwsm
+local app = "uwsm app -- "
+
+local chrome  = app .. "google-chrome-stable"
+local firefox = app .. "firefox"
+-- -show needs to be added; -run-command makes apps launched from rofi go through uwsm too
+local menu    = "rofi -theme $ROFI_THEME_DIR/$ROFI_THEME_STYLE.rasi -run-command '" .. app .. "{cmd}'"
 
 return {
-    terminal    = "alacritty",
+    app         = app,
+    terminal    = app .. "alacritty",
     chrome      = chrome,
     firefox     = firefox,
     browser     = chrome,
-    fileManager = "nautilus",
+    fileManager = app .. "nautilus",
     menu        = menu,
     clipboard   = menu
         .. " -modi clipboard:/usr/bin/cliphist-rofi-img -show clipboard -show-icons"
