@@ -85,8 +85,8 @@
 	"idle_inhibitor": {
 		"format": "{icon}",
 		"format-icons": {
-			"activated": " ",
-			"deactivated": " ",
+			"activated": "",
+			"deactivated": "",
 		},
 		"tooltip-format-activated": "Staying awake",
 		"tooltip-format-deactivated": "Idle as usual",
@@ -96,7 +96,7 @@
 		"all-outputs": false,
 		// small raised number + app icons; empty workspaces show just the (dimmed) number
 		"format": "<span size='small' rise='3pt'>{name} </span>{windows}",
-		"format-window-separator": "", // rewrite icons already end with a space
+		"format-window-separator": " ",
 		"on-click": "activate",
 		"sort-by": "id",
 		"persistent-workspaces": {
@@ -114,25 +114,25 @@
 				9
 			],
 		},
-		"window-rewrite-default": " ",
+		"window-rewrite-default": "",
 		"window-rewrite": {
-			"title<.*youtube.*>": " ",
-			"title<.*github.*>": " ",
-			"class<firefox>": " ",
-			"class<google-chrome>": " ",
-			"title<.*nvim.*>": " ",
-			"class<spotify>": " ",
-			"class<Alacritty>": " ",
-			"class<org.gnome.Nautilus>": " ",
-			"class<org.telegram.desktop>": " ",
-			"class<code>": "󰨞 ",
-			"class<slack>": " ",
-			"class<obsidian>": "  ",
+			"title<.*youtube.*>": "",
+			"title<.*github.*>": "",
+			"class<firefox>": "",
+			"class<google-chrome>": "",
+			"title<.*nvim.*>": "",
+			"class<spotify>": "",
+			"class<Alacritty>": "",
+			"class<org.gnome.Nautilus>": "",
+			"class<org.telegram.desktop>": "",
+			"class<code>": "󰨞",
+			"class<slack>": "",
+			"class<obsidian>": "",
 		},
 		"format-icons": {
-			"urgent": " ",
-			"focused": " ",
-			"default": " ",
+			"urgent": "",
+			"focused": "",
+			"default": "",
 		},
 	},
 	"mpd": {
@@ -183,11 +183,11 @@
 		},
 	},
 	"cpu": {
-		"format": "  {usage}%",
+		"format": " {usage}%",
 		"interval": 5,
 	},
 	"memory": {
-		"format": "  {}%",
+		"format": " {}%",
 		"interval": 5,
 	},
 	"temperature": {
@@ -197,9 +197,9 @@
 		// "format-critical": "{temperatureC}°C {icon}",
 		"format": "{icon} {temperatureC}°C",
 		"format-icons": [
-			" ",
-			" ",
-			" "
+			"",
+			"",
+			""
 		],
 	},
 	"backlight": {
@@ -227,22 +227,22 @@
 		"format": "{icon} {capacity}%",
 		"format-full": "{icon} {capacity}%",
 		"format-charging": "{icon} {capacity}%",
-		"format-plugged": "  {capacity}%",
+		"format-plugged": " {capacity}%",
 		"format-alt": "{icon} {time}",
 		// "format-good": "", // An empty format will hide the module
 		// "format-full": "",
 		"format-icons": {
 			"charging": [
-				"󰢜 ",
-				"󰂆 ",
-				"󰂇 ",
-				"󰂈 ",
-				"󰢝 ",
-				"󰂉 ",
-				"󰢞 ",
-				"󰂊 ",
-				"󰂋 ",
-				"󰂅 "
+				"󰢜",
+				"󰂆",
+				"󰂇",
+				"󰂈",
+				"󰢝",
+				"󰂉",
+				"󰢞",
+				"󰂊",
+				"󰂋",
+				"󰂅"
 			],
 			"default": [
 				"󰁺",
@@ -272,18 +272,18 @@
 	"network": {
 		// "interface": "wlp2*", // (Optional) To force the use of this interface
 		"format-icons": [
-			"󰤯 ",
-			"󰤟 ",
-			"󰤢 ",
-			"󰤥 ",
-			"󰤨 "
+			"󰤯",
+			"󰤟",
+			"󰤢",
+			"󰤥",
+			"󰤨"
 		],
 		"format-wifi": "{icon}", // click to toggle the speeds (format-alt); hover for details
 		"tooltip-format-wifi": "{icon} {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
-		"format-ethernet": "󰀂  {ipaddr}/{cidr}",
-		"tooltip-format": "󰀂  {ifname} via {gwaddr}",
-		"format-linked": "󰀂  {ifname} (No IP)",
-		"format-disconnected": "󰖪 ",
+		"format-ethernet": "󰀂 {ipaddr}/{cidr}",
+		"tooltip-format": "󰀂 {ifname} via {gwaddr}",
+		"format-linked": "󰀂 {ifname} (No IP)",
+		"format-disconnected": "󰖪",
 		"format-alt": "{icon}   {bandwidthDownBits:>9}   {bandwidthUpBits:>9}",
 		"interval": 1,
 	},
@@ -323,16 +323,16 @@
 		],
 		"dynamic-len": 30,
 		"player-icons": {
-			"spotify": " ",
-			"kdeconnect": " ",
-			"default": "🎜 ",
+			"spotify": "",
+			"kdeconnect": "",
+			"default": "🎜",
 		},
 		"status-icons": {
-			"paused": " ",
+			"paused": "",
 		},
 	},
 	"custom/power": {
-		"format": "⏻ ",
+		"format": "⏻",
 		"tooltip": false,
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder

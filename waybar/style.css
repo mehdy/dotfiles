@@ -182,9 +182,10 @@ button:hover {
     color: @dim;
 }
 
-/* monospace + padded speeds (:>9 in config) keep the pill a constant width */
+/* Hack's digits are monospace, so the padded speeds (:>9) keep a constant width;
+   the Propo variant gives icons their real width so they sit centered */
 #network {
-    font-family: "Hack Nerd Font";
+    font-family: "Hack Nerd Font Propo";
 }
 
 #network.disconnected {
