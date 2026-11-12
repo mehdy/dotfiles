@@ -1,14 +1,6 @@
--- FIXME: do I need cmp_nvim_lsp.default_capabilities()?
+-- Tell servers everything nvim-cmp supports (snippets, resolve, label details, ...)
 vim.lsp.config("*", {
-	capabilities = {
-		textDocument = {
-			completion = {
-				completionItem = {
-					snippetSupport = true,
-				},
-			},
-		},
-	},
+	capabilities = require("cmp_nvim_lsp").default_capabilities(),
 })
 
 vim.lsp.config("jsonls", {

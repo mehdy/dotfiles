@@ -99,5 +99,4 @@ telescope.setup({
 	},
 })
 
-telescope.load_extension("media_files")
 telescope.load_extension("live_grep_args")

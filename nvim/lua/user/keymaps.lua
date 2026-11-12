@@ -74,9 +74,9 @@ keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover({border='rounded'})<CR>", opts)
 keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 
-keymap("n", "lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
-keymap("n", "la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-keymap("n", "lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
+keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
 keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 keymap("n", "gj", "<cmd>lua vim.diagnostic.jump({ count = 1, on_jump = function() vim.diagnostic.open_float() end })<CR>", opts)

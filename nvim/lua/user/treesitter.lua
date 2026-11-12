@@ -33,7 +33,6 @@ ts.install({
 	"scss",
 	"sql",
 	"terraform",
-	"tmux",
 	"toml",
 	"tsx",
 	"typescript",

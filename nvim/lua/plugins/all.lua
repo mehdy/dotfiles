@@ -1,5 +1,4 @@
 return {
-	{ "folke/neoconf.nvim" },
 	{ "benomahony/uv.nvim" },
 	{ "nvim-lua/plenary.nvim" }, -- Useful lua functions used ny lots of plugins
 	{ "folke/tokyonight.nvim" }, -- colorscheme
@@ -46,7 +45,6 @@ return {
 	{ "b0o/schemastore.nvim" },
 
 	{ "nvim-telescope/telescope.nvim" },
-	{ "nvim-telescope/telescope-media-files.nvim" },
 	{ "nvim-telescope/telescope-live-grep-args.nvim" },
 
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", lazy = false, branch = "main" },
