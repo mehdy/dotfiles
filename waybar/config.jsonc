@@ -19,6 +19,7 @@
 	"modules-right": [
 		// "mpd",
 		"privacy",
+		"custom/camera",
 		"tray",
 		"custom/dunst",
 		"idle_inhibitor",
@@ -56,6 +57,12 @@
 		"signal": 9,
 		"on-click": "dunstctl set-paused toggle; pkill -RTMIN+9 waybar",
 		"on-click-right": "dunstctl history-pop",
+	},
+	// Camera in use (privacy has no camera type); hidden otherwise
+	"custom/camera": {
+		"exec": "$HOME/.config/waybar/scripts/camera.sh",
+		"return-type": "json",
+		"interval": 2,
 	},
 	// Lights up while the screen is shared or the mic is in use
 	"privacy": {
@@ -284,21 +291,21 @@
 		// "scroll-step": 1, // %, can be a float
 		"format": "{icon} {format_source}",
 		"format-bluetooth": "󰂰 {icon} {format_source}",
-		"format-bluetooth-muted": "󰂰 {icon} 󰝟  {format_source}",
-		"format-muted": "󰝟  {format_source}",
-		"format-source": " ",
-		"format-source-muted": " ",
+		"format-bluetooth-muted": "󰂰 {icon} 󰝟 {format_source}",
+		"format-muted": "󰝟 {format_source}",
+		"format-source": "",
+		"format-source-muted": "",
 		"format-icons": {
-			"headphone": " ",
-			"hands-free": " ",
-			"headset": " ",
-			"phone": " ",
-			"portable": " ",
-			"car": " ",
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
 			"default": [
-				" ",
-				" ",
-				"  "
+				"",
+				"",
+				""
 			],
 		},
 		"on-click": "pavucontrol",

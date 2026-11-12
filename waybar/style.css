@@ -81,6 +81,7 @@ button:hover {
 
 #custom-minimized,
 #custom-dunst,
+#custom-camera,
 #window,
 #mpris,
 #clock,
@@ -159,7 +160,7 @@ button:hover {
 }
 
 #privacy-item {
-    padding: 0 8px;
+    padding: 0 6px 0 5px; /* 14px icon + these sides = same width as the camera pill */
     border-radius: 999px;
     color: @bg;
 }
@@ -168,8 +169,13 @@ button:hover {
     background: @crit;
 }
 
+#custom-camera.active {
+    color: @bg;
+    background: @crit;
+}
+
 #privacy-item.audio-in {
-    background: @warn;
+    background: @crit;
 }
 
 #pulseaudio.muted {
