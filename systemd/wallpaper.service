@@ -1,0 +1,6 @@
+[Unit]
+Description=Set a random wallpaper from wallhaven.cc
+
+[Service]
+Type=oneshot
+ExecStart=%h/.config/hypr/random-wallpaper

@@ -56,6 +56,9 @@ fi
 
 # Session services, started with graphical-session.target under uwsm
 systemctl --user enable $DOTFILES/systemd/swayosd.service
+systemctl --user link $DOTFILES/systemd/wallpaper.service
+systemctl --user enable --now $DOTFILES/systemd/wallpaper.timer
+[[ -e ~/Pictures/wallpaper.jpg ]] || systemctl --user start wallpaper.service
 systemctl --user enable hypridle hyprpaper waybar hyprpolkitagent cliphist gcr-ssh-agent.socket
 
 # Dark theme (persisted by dconf)

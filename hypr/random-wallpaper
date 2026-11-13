@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+# Fetch a random work-safe, muted wallpaper from wallhaven.cc and apply it.
+# Run weekly by systemd/wallpaper.timer. hyprpaper.conf loads ~/Pictures/wallpaper.jpg
+# at startup, which is kept as a symlink to the current image.
+set -euo pipefail
+
+cache=${XDG_CACHE_HOME:-$HOME/.cache}/wallpapers
+link=$HOME/Pictures/wallpaper.jpg
+
+# Dark/muted wallhaven palette colors to search by; one is picked at random.
+dark=(000000 424153 333399 336600 663300 666600 663399 996633)
+# Skip images that have any of these bright colors among their main colors.
+bright='#ffffff|#ffff00|#ffcc33|#ff9900|#ff6600|#ea4c88|#cc0000'
+
+# Landscapes, abstract art or space, a third each. "+tag" requires the tag; plain words
+# match loosely (a "fog" search returned a car in fog). The "general" category
+# alone still includes game and fantasy art, hence the exclusions.
+pick() { local a=("$@"); echo "${a[RANDOM % ${#a[@]}]}"; }
+color=$(pick "${dark[@]}")
+case $((RANDOM % 3)) in
+	0) subject="+landscape $(pick '' '+mountains' '+forest' '+lake' '+mist')" ;;
+	1) subject=+abstract ;;
+	2) subject="+space $(pick '' '+galaxy' '+nebula' '+planet')"
+	   color=$(pick 000000 424153 333399) ;; # space is rarely green or brown
+esac
+exclude='-car -vehicle -women -men -people -anime -"video games" -"video game art" -"fantasy art" -spaceship -astronaut'
+query=$(jq -rn --arg q "$subject $exclude" '$q | @uri')
+# Second check on each candidate's full tag list, for what the search lets through
+blocked='car|vehicle|motor|ship|astronaut|woman|women|girl|\bmen\b|\bman\b|people|person|model|anime|game|fantasy|character|weapon|soldier'
+
+# categories=100: general only (no anime, no people); purity=100: SFW only
+api="https://wallhaven.cc/api/v1/search?categories=100&purity=100&sorting=random"
+api+="&atleast=2880x1920&ratios=landscape&colors=$color"
+api+="&q=$query"
+
+# At boot the timer can fire before the network is up
+for _ in {1..30}; do
+	results=$(curl -fsS --max-time 20 "$api") && break
+	sleep 10
+done
+
+url=
+for id in $(jq -r --arg bright "$bright" '
+	.data[] | select(.file_type == "image/jpeg")
+	        | select(.colors | join(",") | test($bright) | not) | .id
+' <<<"$results" | head -n 8); do
+	info=$(curl -fsS --max-time 20 "https://wallhaven.cc/api/v1/w/$id") || continue
+	jq -e --arg blocked "$blocked" '[.data.tags[].name] | join(",") | test($blocked; "i")' \
+		<<<"$info" >/dev/null && continue
+	url=$(jq -r .data.path <<<"$info")
+	break
+done
+[[ -n $url ]] || { echo "no matching wallpaper found" >&2; exit 1; }
+
+mkdir -p "$cache" "${link%/*}"
+file=$cache/${url##*/}
+curl -fsS --max-time 120 -o "$file.part" "$url"
+mv "$file.part" "$file"
+ln -sfn "$file" "$link"
+find "$cache" -type f ! -name "${file##*/}" -delete
+
+# Apply now if a Hyprland session is running; otherwise it is picked up at next login
+hyprctl hyprpaper wallpaper ",$file" >/dev/null 2>&1 || true
+echo "wallpaper: $url"
