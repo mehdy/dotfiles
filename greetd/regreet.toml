@@ -1,0 +1,17 @@
+[commands]
+reboot = [ "systemctl", "reboot" ]
+poweroff = [ "systemctl", "poweroff" ]
+
+[background]
+path = "@HOME@/Pictures/wallpaper-blur.png"
+fit = "Fill"
+
+[GTK]
+application_prefer_dark_theme = true
+
+theme_name = "Orchis-Dark"
+icon_theme_name = "Tela-circle-dark"
+
+[appearance]
+greeting_msg = "Welcome!"
+

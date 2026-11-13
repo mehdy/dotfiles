@@ -4,6 +4,8 @@ hyprlock
 hyprpaper
 hyprpolkitagent
 uwsm
+greetd
+greetd-regreet
 xdg-desktop-portal-hyprland
 waybar
 dunst

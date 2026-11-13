@@ -1,0 +1,7 @@
+[terminal]
+vt = 1
+
+# The greeter: a bare Hyprland whose only job is to run regreet (see hyprland-config).
+[default_session]
+command = "hyprland --config /etc/greetd/hyprland-config"
+user = "@USER@"

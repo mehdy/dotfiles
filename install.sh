@@ -40,6 +40,20 @@ if (( $#missing )); then
 	echo "  sudo pacman -S --needed $missing\n"
 fi
 
+# Login screen: greetd runs a bare Hyprland that runs regreet. greetd reads
+# /etc/greetd as root, so these are copied (not linked), with @USER@/@HOME@ filled in.
+for f in config.toml hyprland-config regreet.toml; do
+	sed -e "s|@USER@|$USER|g" -e "s|@HOME@|$HOME|g" $DOTFILES/greetd/$f |
+		sudo install -Dm644 /dev/stdin /etc/greetd/$f
+done
+dm=$(readlink /etc/systemd/system/display-manager.service)
+if [[ -n $dm && ${dm:t} != greetd.service ]]; then
+	echo "\n${dm:t} is the display manager — switch with:"
+	echo "  sudo systemctl disable ${dm:t} && sudo systemctl enable greetd\n"
+else
+	sudo systemctl enable greetd
+fi
+
 # Session services, started with graphical-session.target under uwsm
 systemctl --user enable $DOTFILES/systemd/swayosd.service
 systemctl --user enable hypridle hyprpaper waybar hyprpolkitagent cliphist gcr-ssh-agent.socket
