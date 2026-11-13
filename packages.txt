@@ -26,6 +26,7 @@ python
 pavucontrol
 nm-connection-editor
 blueman
+fprintd
 
 ttf-hack-nerd
 noto-fonts

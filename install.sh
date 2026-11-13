@@ -54,6 +54,11 @@ else
 	sudo systemctl enable greetd
 fi
 
+# Fingerprint for sudo: try a finger first, fall back to the password.
+# hyprlock reads fingerprints itself. Enroll with: fprintd-enroll
+grep -q pam_fprintd /etc/pam.d/sudo ||
+	sudo sed -i '1a auth\t\tsufficient\tpam_fprintd.so' /etc/pam.d/sudo
+
 # Session services, started with graphical-session.target under uwsm
 systemctl --user enable $DOTFILES/systemd/swayosd.service
 systemctl --user link $DOTFILES/systemd/wallpaper.service
