@@ -19,6 +19,6 @@ return {
     fileManager = app .. "nautilus",
     menu        = menu,
     clipboard   = menu
-        .. " -modi clipboard:/usr/bin/cliphist-rofi-img -show clipboard -show-icons"
+        .. " -modi clipboard:$HOME/.config/rofi/cliphist-rofi-img -show clipboard -show-icons"
         .. " -display-columns 2",
 }

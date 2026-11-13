@@ -11,6 +11,8 @@ waybar
 dunst
 swayosd
 rofi
+rofi-calc
+rofi-emoji
 cliphist
 wl-clipboard
 wl-clip-persist
