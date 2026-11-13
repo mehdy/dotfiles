@@ -20,6 +20,7 @@ links=(
 	dunst           .config/dunst
 	swayosd         .config/swayosd
 	rofi            .config/rofi
+	gnupg/gpg-agent.conf .gnupg/gpg-agent.conf
 )
 
 for src dst in $links; do
