@@ -29,6 +29,7 @@ blueman
 
 ttf-hack-nerd
 noto-fonts
+noto-fonts-emoji
 otf-font-awesome
 orchis-theme
 tela-circle-icon-theme-standard
