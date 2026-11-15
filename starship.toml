@@ -28,3 +28,12 @@ asia-southeast1 = 'as1'
 a11s-dev = 'dev'
 a11s-live = 'live'
 
+
+[golang]
+disabled = true
+
+[python]
+disabled = true
+
+[nodejs]
+disabled = true
