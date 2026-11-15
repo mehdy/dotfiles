@@ -19,10 +19,14 @@ hl.config({
             natural_scroll       = true,
             tap_button_map       = "lmr",
             tap_and_drag         = false,
-            clickfinger_behavior = true,
+            clickfinger_behavior = false, -- true made a resting thumb turn left-clicks into right-clicks
+            disable_while_typing = true,
         },
     },
 })
 
 -- https://wiki.hypr.land/Configuring/Basics/Binds/Gestures/
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
+
+-- Swallow 2-finger pinches so apps never see them (stops accidental zoom while scrolling)
+hl.gesture({ fingers = 2, direction = "pinch", action = function() end })
