@@ -2,6 +2,7 @@
 # Link the dotfiles into place. Safe to re-run from anywhere: correct links are
 # left alone, and anything else in the way is moved to <name>.bak.<timestamp>.
 # Packages: sudo pacman -S --needed - < packages.txt
+#           yay -S --needed - < aur-packages.txt
 
 DOTFILES=${0:A:h}
 
@@ -21,6 +22,7 @@ links=(
 	swayosd         .config/swayosd
 	rofi            .config/rofi
 	gnupg/gpg-agent.conf .gnupg/gpg-agent.conf
+	fontconfig/fonts.conf .config/fontconfig/fonts.conf
 )
 
 for src dst in $links; do
@@ -39,6 +41,11 @@ missing=(${(f)"$(pacman -T ${=$(<$DOTFILES/packages.txt)})"})
 if (( $#missing )); then
 	echo "\nMissing packages — install them, then re-run this script:"
 	echo "  sudo pacman -S --needed $missing\n"
+fi
+missing=(${(f)"$(pacman -T ${=$(<$DOTFILES/aur-packages.txt)})"})
+if (( $#missing )); then
+	echo "\nMissing AUR packages — install them, then re-run this script:"
+	echo "  yay -S --needed $missing\n"
 fi
 
 # Login screen: greetd runs a bare Hyprland that runs regreet. greetd reads
