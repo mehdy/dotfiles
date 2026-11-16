@@ -22,4 +22,5 @@ return {
         .. " -modi clipboard:$HOME/.config/rofi/cliphist-rofi-img -show clipboard -show-icons"
         .. " -display-columns 2",
     wifi        = "networkmanager_dmenu",
+    displays    = "$HOME/.config/rofi/monitor-menu",
 }

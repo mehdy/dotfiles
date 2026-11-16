@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# Monitor layout picker (SUPER+CTRL+M): laptop + external, external only,
+# laptop only, or mirror the laptop onto the external.
+# Changes are applied live with `hyprctl eval`; "Laptop + external" just reloads
+# hypr/monitor.lua, so a config reload also brings that layout back.
+
+laptop=eDP-1
+
+notify() { notify-send -a "Displays" -i video-display "$@"; }
+apply() { hyprctl eval "$1" >/dev/null; }
+
+mapfile -t externals < <(hyprctl monitors all -j | jq -r --arg l "$laptop" '.[] | select(.name != $l) | .name')
+if (( ${#externals[@]} == 0 )); then
+	# Nothing to arrange; make sure the laptop isn't left disabled
+	hyprctl reload >/dev/null
+	notify "No external monitor connected"
+	exit
+fi
+
+# External monitor names for the menu, e.g. "Samsung LS32D80xU"
+ext_desc=$(hyprctl monitors all -j | jq -r --arg l "$laptop" \
+	'[.[] | select(.name != $l) | (.make + " " + .model)] | join(", ")')
+
+# Current layout, to highlight it
+read -r laptop_on ext_on mirrored < <(hyprctl monitors all -j | jq -r --arg l "$laptop" '
+	[ any(.[]; .name == $l and (.disabled | not)),
+	  any(.[]; .name != $l and (.disabled | not)),
+	  any(.[]; .name != $l and .mirrorOf != "none") ] | @tsv')
+
+options=(
+	"󰍺   Laptop + external"
+	"󰍹   External only"
+	"󰌢   Laptop only"
+	"󰍺   Mirror laptop to external"
+)
+if [[ $mirrored == true ]]; then current=3
+elif [[ $laptop_on == true && $ext_on == true ]]; then current=0
+elif [[ $ext_on == true ]]; then current=1
+else current=2
+fi
+
+choice=$(printf '%s\n' "${options[@]}" |
+	rofi -dmenu -i -no-custom -format i -p "Displays" -a "$current" \
+		-mesg "External: $ext_desc" \
+		-theme-str 'entry { placeholder-color: transparent; }') || exit
+
+# Start every layout from the config, then change what differs
+hyprctl reload >/dev/null
+case $choice in
+0) ;;
+1) apply "hl.monitor({ output = \"$laptop\", disabled = true })" ;;
+2) for m in "${externals[@]}"; do apply "hl.monitor({ output = \"$m\", disabled = true })"; done ;;
+3) for m in "${externals[@]}"; do apply "hl.monitor({ output = \"$m\", mode = \"highres\", position = \"auto\", mirror = \"$laptop\" })"; done ;;
+esac
+notify "${options[choice]#*   }"

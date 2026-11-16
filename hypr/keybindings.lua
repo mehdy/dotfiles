@@ -13,6 +13,7 @@ hl.bind(mainMod .. " + Space",    hl.dsp.exec_cmd(p.menu .. " -show drun"))
 hl.bind(mainMod .. " + CTRL + E", hl.dsp.exec_cmd(p.menu .. " -show emoji"))
 hl.bind(mainMod .. " + CTRL + C", hl.dsp.exec_cmd(p.menu .. " -show calc"))
 hl.bind(mainMod .. " + CTRL + W", hl.dsp.exec_cmd(p.wifi))
+hl.bind(mainMod .. " + CTRL + M", hl.dsp.exec_cmd(p.displays)) -- monitor layout
 
 -- Behaviors
 hl.bind(mainMod .. " + X", hl.dsp.window.close())
