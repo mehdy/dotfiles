@@ -278,13 +278,15 @@
 			"󰤥",
 			"󰤨"
 		],
-		"format-wifi": "{icon}", // click to toggle the speeds (format-alt); hover for details
+		"format-wifi": "{icon}", // right-click to toggle the speeds (format-alt); hover for details
 		"tooltip-format-wifi": "{icon} {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
 		"format-ethernet": "󰀂 {ipaddr}/{cidr}",
 		"tooltip-format": "󰀂 {ifname} via {gwaddr}",
 		"format-linked": "󰀂 {ifname} (No IP)",
 		"format-disconnected": "󰖪",
 		"format-alt": "{icon}   {bandwidthDownBits:>9}   {bandwidthUpBits:>9}",
+		"format-alt-click": "click-right",
+		"on-click": "networkmanager_dmenu", // Wi-Fi / VPN menu (networkmanager-dmenu)
 		"interval": 1,
 	},
 	"pulseaudio": {

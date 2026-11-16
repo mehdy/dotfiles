@@ -25,6 +25,7 @@ jq
 python
 pavucontrol
 nm-connection-editor
+networkmanager-dmenu
 blueman
 fprintd
 

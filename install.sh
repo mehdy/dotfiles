@@ -21,6 +21,7 @@ links=(
 	dunst           .config/dunst
 	swayosd         .config/swayosd
 	rofi            .config/rofi
+	networkmanager-dmenu .config/networkmanager-dmenu
 	gnupg/gpg-agent.conf .gnupg/gpg-agent.conf
 	fontconfig/fonts.conf .config/fontconfig/fonts.conf
 )
