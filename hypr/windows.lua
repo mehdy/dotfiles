@@ -31,10 +31,36 @@ hl.workspace_rule({ workspace = "2", monitor = "eDP-1" })
 hl.workspace_rule({ workspace = "3", monitor = "eDP-1" })
 hl.workspace_rule({ workspace = "4", monitor = "eDP-1" })
 hl.workspace_rule({ workspace = "5", monitor = "eDP-1" })
-hl.workspace_rule({ workspace = "6", default_name = "q", persistent = true, monitor = "desc:Dell Inc. DELL U3225QE GZTW384" })
-hl.workspace_rule({ workspace = "7", default_name = "w", persistent = true, monitor = "desc:Dell Inc. DELL U3225QE GZTW384" })
-hl.workspace_rule({ workspace = "8", default_name = "e", persistent = true, monitor = "desc:Dell Inc. DELL U3225QE GZTW384" })
-hl.workspace_rule({ workspace = "9", default_name = "r", persistent = true, monitor = "desc:Dell Inc. DELL U3225QE GZTW384" })
+-- Workspaces q-r (6-9) live on whichever external monitor is connected (any
+-- workstation), falling back to the laptop screen when none is. Rules are
+-- re-created whenever a monitor comes or goes, and existing workspaces moved.
+local LAPTOP = "eDP-1"
+local qwer = { { id = "6", name = "q" }, { id = "7", name = "w" }, { id = "8", name = "e" }, { id = "9", name = "r" } }
+local qwerRules = {}
+
+local function assignQwer()
+    local target = LAPTOP
+    for _, m in ipairs(hl.get_monitors()) do
+        if m.name ~= LAPTOP then
+            target = m.name
+            break
+        end
+    end
+
+    for _, rule in ipairs(qwerRules) do rule:set_enabled(false) end
+    qwerRules = {}
+    for _, w in ipairs(qwer) do
+        table.insert(qwerRules, hl.workspace_rule({ workspace = w.id, default_name = w.name, persistent = true, monitor = target }))
+        local ws = hl.get_workspace(w.id)
+        if ws and ws.monitor and ws.monitor.name ~= target then
+            hl.dispatch(hl.dsp.workspace.move({ workspace = w.id, monitor = target }))
+        end
+    end
+end
+
+assignQwer()
+hl.on("monitor.added", assignQwer)
+hl.on("monitor.removed", assignQwer)
 
 -- Floating utility dialogs, centered
 hl.window_rule({
