@@ -90,6 +90,15 @@ alias lt='eza -T --git-ignore --level=2 --group-directories-first'
 alias llt='eza -lT --git-ignore --level=2 --group-directories-first'
 alias lT='eza -T --git-ignore --level=4 --group-directories-first'
 
+# y: yazi that leaves the shell in the folder you quit in (q; Q quits without cd)
+y() {
+	local tmp=$(mktemp -t yazi-cwd.XXXXXX) cwd
+	yazi "$@" --cwd-file="$tmp"
+	cwd=$(<"$tmp")
+	[[ -n $cwd && $cwd != $PWD ]] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
 eval "$(starship init zsh)"
 
 # Machine-local settings, not tracked in the dotfiles repo

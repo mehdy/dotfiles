@@ -6,7 +6,8 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Programs
 hl.bind(mainMod .. " + T",        hl.dsp.exec_cmd(p.terminal))
-hl.bind(mainMod .. " + F",        hl.dsp.exec_cmd(p.fileManager))
+hl.bind(mainMod .. " + F",        hl.dsp.exec_cmd(p.fileManager))     -- yazi
+hl.bind(mainMod .. " + ALT + F",  hl.dsp.exec_cmd(p.guiFileManager))  -- Thunar
 hl.bind(mainMod .. " + B",        hl.dsp.exec_cmd(p.browser))
 hl.bind(mainMod .. " + C",        hl.dsp.exec_cmd(p.clipboard))
 hl.bind(mainMod .. " + Space",    hl.dsp.exec_cmd(p.menu .. " -show drun"))

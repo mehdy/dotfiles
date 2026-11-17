@@ -25,6 +25,12 @@ jq
 python
 pavucontrol
 nm-connection-editor
+thunar
+tumbler
+ffmpegthumbnailer
+yazi
+7zip
+chafa
 networkmanager-dmenu
 blueman
 fprintd

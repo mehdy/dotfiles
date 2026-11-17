@@ -1,8 +1,8 @@
 #!/bin/zsh
-# Link the dotfiles into place. Safe to re-run from anywhere: correct links are
-# left alone, and anything else in the way is moved to <name>.bak.<timestamp>.
-# Packages: sudo pacman -S --needed - < packages.txt
-#           yay -S --needed - < aur-packages.txt
+# Link the dotfiles into place and install what they need. Safe to re-run from
+# anywhere: correct links are left alone, anything else in the way is moved to
+# <name>.bak.<timestamp>, and only missing packages are installed
+# (packages.txt with pacman, aur-packages.txt with yay).
 
 DOTFILES=${0:A:h}
 
@@ -40,13 +40,17 @@ done
 
 missing=(${(f)"$(pacman -T ${=$(<$DOTFILES/packages.txt)})"})
 if (( $#missing )); then
-	echo "\nMissing packages — install them, then re-run this script:"
-	echo "  sudo pacman -S --needed $missing\n"
+	echo "\nInstalling packages: $missing"
+	sudo pacman -S --needed $missing || echo "pacman failed; re-run this script once it's sorted"
 fi
 missing=(${(f)"$(pacman -T ${=$(<$DOTFILES/aur-packages.txt)})"})
 if (( $#missing )); then
-	echo "\nMissing AUR packages — install them, then re-run this script:"
-	echo "  yay -S --needed $missing\n"
+	if (( $+commands[yay] )); then
+		echo "\nInstalling AUR packages: $missing"
+		yay -S --needed $missing || echo "yay failed; re-run this script once it's sorted"
+	else
+		echo "\nyay isn't installed, so these AUR packages weren't: $missing"
+	fi
 fi
 
 # Login screen: greetd runs a bare Hyprland that runs regreet. greetd reads
@@ -74,6 +78,9 @@ systemctl --user link $DOTFILES/systemd/wallpaper.service
 systemctl --user enable --now $DOTFILES/systemd/wallpaper.timer
 [[ -e ~/Pictures/wallpaper.jpg ]] || systemctl --user start wallpaper.service
 systemctl --user enable hypridle hyprpaper waybar hyprpolkitagent cliphist gcr-ssh-agent.socket
+
+# Folders opened from other apps (browser downloads, etc.) go to Thunar
+xdg-mime default thunar.desktop inode/directory
 
 # Dark theme (persisted by dconf)
 gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Dark"   # GTK3

@@ -16,7 +16,9 @@ return {
     chrome      = chrome,
     firefox     = firefox,
     browser     = chrome,
-    fileManager = app .. "nautilus",
+    -- yazi in a terminal for everyday use; Thunar when a GUI (drag and drop) is handier
+    fileManager    = app .. "alacritty --class yazi -e yazi",
+    guiFileManager = app .. "thunar",
     menu        = menu,
     clipboard   = menu
         .. " -modi clipboard:$HOME/.config/rofi/cliphist-rofi-img -show clipboard -show-icons"
