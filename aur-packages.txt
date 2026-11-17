@@ -1,1 +1,4 @@
 vazirmatn-fonts
+google-cloud-cli
+google-cloud-cli-bq
+google-cloud-cli-gsutil
