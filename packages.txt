@@ -54,3 +54,5 @@ gitui
 btop
 kdeconnect
 imagemagick
+net-tools
+bind
